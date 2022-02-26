@@ -33,6 +33,13 @@
 https://db-engines.com/en/
 
 
+https://drill.apache.org/
+
+https://www.toadworld.com/
+
+https://github.com/prestodb/presto
+
+
 <p>&nbsp;</p>
 
 # Cassandra
