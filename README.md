@@ -1,4 +1,4 @@
-# SQL and DataBases - Architekture and practical examples
+# SQL, NoSQL and DataBases - Architekture and practical examples
 
 # Table of contents
 
@@ -21,10 +21,6 @@
 8. 
 
 <p>&nbsp;</p>
-
-
-
-
 
 # Introduction
 
