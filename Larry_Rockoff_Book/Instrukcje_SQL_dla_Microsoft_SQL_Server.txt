@@ -1,0 +1,2244 @@
+﻿Język SQL. Przyjazny podręcznik, wydanie 2, wydawnictwo Helion SA, 2017
+
+.
+
+Instrukcje SQL dla Microsoft SQL Server
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+JAK KORZYSTAĆ Z TEGO PLIKU
+- - - - - - — - - - - - - - - - - - - -
+
+
+Znajdziesz tu wszystkie instrukcje SQL o składni dedykowanej dla Microsoft SQL Server, które zamieszczono w książce „Język SQL. Przyjazny podręcznik”. 
+
+Wśród nich znajdziesz również takie, które umożliwią Ci utworzenie tych samych struktur danych, do których występują odwołania w tej książce. Dzięki temu będziesz mógł uruchomić każde z poniższych zapytań i zobaczyć jego wyniki.
+
+Zanim przystąpisz do tworzenia struktur bazodanowych, wypełniania ich danymi i uruchamiania zapytań, będziesz musiał zainstalować dwa komponenty: 
+
+1) Microsoft SQL Server 2014 Express
+2) Microsoft SQL Server 2014 Management Studio Express
+
+W dodatku A do książki „Język SQL. Przyjazny podręcznik” znajdziesz instrukcje ich poprawnej instalacji, a także wskazówki odnośnie tworzenia bazy danych.
+
+Aby zobaczyć wynik danego zapytania umieszczonego w tym pliku, wystarczy je skopiować, wkleić w oknie przeznaczonym do wpisywania zapytań w SQL Management Studio i uruchomić.
+
+W tym pliku znajdziesz:
+
+1) Skrypt do tworzenia tabel oraz umieszczania w nich danych, bądź ich usuwania
+
+Skryptu należy użyć do utworzenia struktr bazodanowych oraz wstawienia do nich danych. Wówczas możliwe będzie wykonanie znajdujących się w książce zapytań. Znajdują się w nim polecenia CREATE TABLE za pomocą których zostaną utworzone tabele, instrukcje ze słowem kluczowym INSERT umożliwiające wstawienie do nich danych, a także polecenia DROP TABLE dające możliwość usunięcia tabeli z bazy danych, jeśli dana tabela już w niej istnieje i chcielibyśmy zastąpić ją inną. Jak już wspomniano, przed uruchomieniem poniższego skryptu konieczne będzie utworzenie bazy danych. Gdy już powstanie, wystarczy skopiować cały skrypt i umieścić go w oknie przeznaczonym do tworzenia zapytań i uruchomić. 
+
+2) Instrukcje SQL z książki
+
+W tej sekcji znajdziesz wszystkie instrukcje SQL zamieszczone w kolejnych rozdziałach książki, o składni dedykowanej dla Microsoft SQL Server. Jeśli dane zapytanie nie miało zastosowania w przypadku tej bazy danych, zostało pominięte. W rozdziałach 1., 19. oraz 20. nie umieszczono żadnych instrukcji SQL.
+ 
+- - - - - - — - - - - - - - - - - - - -
+SKRYPT DO TWORZENIA TABEL I UMIESZCZANIA W NICH DANYCH
+- - - - - - — - - - - - - - - - - - - -
+
+
+
+-- Tabela Klienci:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Klienci')
+AND TYPE IN (N'U'))
+DROP TABLE Klienci
+GO
+
+CREATE TABLE Klienci
+(IDKlienta INT NOT NULL,
+ImięKlienta VARCHAR(30) NULL,
+NazwiskoKlienta VARCHAR(30) NULL)
+
+INSERT INTO Klienci (IDKlienta, ImięKlienta, NazwiskoKlienta)
+VALUES (1, 'Sylwia', 'Dudziak')
+
+INSERT INTO Klienci (IDKlienta, ImięKlienta, NazwiskoKlienta)
+VALUES (2, 'Ryszard', 'Wieczorek')
+
+INSERT INTO Klienci (IDKlienta, ImięKlienta, NazwiskoKlienta)
+VALUES (3, 'Paweł', 'Janas')
+
+INSERT INTO Klienci (IDKlienta, ImięKlienta, NazwiskoKlienta)
+VALUES (4, 'Szymon', 'Majkowski')
+
+-- Tabela Sprzedaż:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Sprzedaż')
+AND TYPE IN (N'U'))
+DROP TABLE Sprzedaż
+GO
+
+CREATE TABLE Sprzedaż
+(IDSprzedaży INT NOT NULL,
+ImięKlienta VARCHAR(30) NULL,
+NazwiskoKlienta VARCHAR(30) NULL,
+ZakupionaIlość INT NULL,
+CenaZaSztukę FLOAT NULL)
+
+INSERT INTO Sprzedaż (IDSprzedaży, ImięKlienta, NazwiskoKlienta, ZakupionaIlość, CenaZaSztukę)
+VALUES (1, 'Andrzej', 'Lipkowski', 4, 2.5)
+
+INSERT INTO Sprzedaż (IDSprzedaży, ImięKlienta, NazwiskoKlienta, ZakupionaIlość, CenaZaSztukę)
+VALUES (2, 'Karolina', 'Bielska', 10, 1.25)
+
+INSERT INTO Sprzedaż (IDSprzedaży, ImięKlienta, NazwiskoKlienta, ZakupionaIlość, CenaZaSztukę)
+VALUES (3, 'Janusz', 'Solecki', 5, 4)
+
+-- Tabela Produkty:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Produkty')
+AND TYPE IN (N'U'))
+DROP TABLE Produkty
+GO
+
+CREATE TABLE Produkty
+(IDProduktu INT NOT NULL,
+Opis VARCHAR(30) NULL,
+Waga INT NULL)
+
+INSERT INTO Produkty (IDProduktu, Opis)
+VALUES (1, 'Drukarka A')
+
+INSERT INTO Produkty (IDProduktu, Opis, Waga)
+VALUES (2, 'Drukarka B', 0)
+
+INSERT INTO Produkty (IDProduktu, Opis, Waga)
+VALUES (3, 'Monitor C', 2)
+
+INSERT INTO Produkty (IDProduktu, Opis, Waga)
+VALUES (4, 'Laptop D', 4)
+
+-- Tabela Sprzedawcy:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Sprzedawcy')
+AND TYPE IN (N'U'))
+DROP TABLE Sprzedawcy
+GO
+
+CREATE TABLE Sprzedawcy
+(IDSprzedawcy INT NOT NULL,
+ImięSprzedawcy VARCHAR(30) NULL,
+NazwiskoSprzedawcy VARCHAR(30) NULL)
+
+INSERT INTO Sprzedawcy (IDSprzedawcy, ImięSprzedawcy, NazwiskoSprzedawcy)
+VALUES (1, 'Grzegorz', 'Dubiel')
+
+INSERT INTO Sprzedawcy (IDSprzedawcy, ImięSprzedawcy, NazwiskoSprzedawcy)
+VALUES (2, 'Karolina', 'Dubiel')
+
+INSERT INTO Sprzedawcy (IDSprzedawcy, ImięSprzedawcy, NazwiskoSprzedawcy)
+VALUES (3, 'Natalia', 'Lipska')
+
+INSERT INTO Sprzedawcy (IDSprzedawcy, ImięSprzedawcy, NazwiskoSprzedawcy)
+VALUES (4, 'Justyna', 'Kowalska')
+
+-- Tabela SortowanieDanych:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'SortowanieDanych')
+AND TYPE IN (N'U'))
+DROP TABLE SortowanieDanych
+GO
+
+CREATE TABLE SortowanieDanych
+(IDTabeli INT NOT NULL,
+DaneZnakowe VARCHAR(30) NULL,
+DaneLiczbowe INT NULL)
+
+INSERT INTO SortowanieDanych (IDTabeli, DaneZnakowe, DaneLiczbowe)
+VALUES (1, '23', 23)
+
+INSERT INTO SortowanieDanych (IDTabeli, DaneZnakowe, DaneLiczbowe)
+VALUES (2, '5', 5)
+
+INSERT INTO SortowanieDanych (IDTabeli, DaneZnakowe)
+VALUES (3, 'Pies')
+
+INSERT INTO SortowanieDanych (IDTabeli, DaneLiczbowe)
+VALUES (4, -6)
+
+-- Tabela Książki:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Książki')
+AND TYPE IN (N'U'))
+DROP TABLE Książki
+GO
+
+CREATE TABLE Książki
+(IDKsiążki INT NOT NULL,
+Tytuł VARCHAR(30) NULL,
+Autor VARCHAR (30) NULL,
+SprzedażWBieżącymMiesiącu INT NULL)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (1, 'Duma i uprzedzenie', 'Austen', 15)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (2, 'Folwark zwierzęcy', 'Orwell', 7)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (3, 'Kupiec wenecki', 'Szekspir', 5)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (4, 'Romeo i Julia', 'Szekspir', 8)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (5, 'Oliver Twist', 'DIckens', 3)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (6, 'Kandyd', 'Wolter', 9)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (7, 'Szkarłatna litera', 'Hawthorne', 12)
+
+INSERT INTO Książki (IDKsiążki, Tytuł, Autor, SprzedażWBieżącymMiesiącu) VALUES (8, 'Hamlet', 'Szekspir', 2)
+
+-- Tabela Filmy:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Filmy')
+AND TYPE IN (N'U'))
+DROP TABLE Filmy
+GO
+
+CREATE TABLE Filmy
+(IDFilmu INT NOT NULL,
+TytułFilmu VARCHAR(35) NULL,
+Klasyfikacja VARCHAR(30) NULL)
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (1, 'To właśnie miłość', 'R')
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (2, 'Północ – północny zachód', 'brak kategorii')
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (3, 'Miłość i śmierć', 'PG')
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (4, 'Truman Show', 'PG')
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (5, 'Taka miłość się nie zdarza', 'R')
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (6, 'Do diabła z miłością', 'PG-13')
+
+INSERT INTO Filmy (IDFilmu, TytułFilmu, Klasyfikacja) VALUES (7, 'Gdzie jest Nemo?', 'G')
+
+-- Tabela Aktorzy:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Aktorzy')
+AND TYPE IN (N'U'))
+DROP TABLE Aktorzy
+GO
+
+CREATE TABLE Aktorzy
+(IDAktora INT NOT NULL,
+Imię VARCHAR(30) NULL,
+Nazwisko VARCHAR(30) NULL)
+
+INSERT INTO Aktorzy (IDAktora, Imię, Nazwisko) VALUES (1, 'Cary', 'Grant')
+
+INSERT INTO Aktorzy (IDAktora, Imię, Nazwisko) VALUES (2, 'Mary', 'Steenburgen')
+
+INSERT INTO Aktorzy (IDAktora, Imię, Nazwisko) VALUES (3, 'Jon', 'Voight')
+
+INSERT INTO Aktorzy (IDAktora, Imię, Nazwisko) VALUES (4, 'Dustin', 'Hoffman')
+
+INSERT INTO Aktorzy (IDAktora, Imię, Nazwisko) VALUES (5, 'John', 'Wayne')
+
+INSERT INTO Aktorzy (IDAktora, Imię, Nazwisko) VALUES (6, 'Gary', 'Cooper')
+
+-- Tabela RejestrZamówień:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'RejestrZamówień')
+AND TYPE IN (N'U'))
+DROP TABLE RejestrZamówień
+GO
+
+CREATE TABLE RejestrZamówień
+(IDZamówienia INT NOT NULL,
+Klient VARCHAR(30) NULL,
+Województwo VARCHAR (30) NULL,
+ZakupionaIlość INT NULL,
+CenaZaSztukę FLOAT NULL)
+
+INSERT INTO RejestrZamówień (IDZamówienia, Klient, Województwo, ZakupionaIlość, CenaZaSztukę) VALUES (1, 'Andrzej Lipkowski', 'pomorskie', 4, 2.5)
+
+INSERT INTO RejestrZamówień (IDZamówienia, Klient, Województwo, ZakupionaIlość, CenaZaSztukę) VALUES (2, 'Karolina Bielska', 'mazowieckie', 10, 1.25)
+
+INSERT INTO RejestrZamówień (IDZamówienia, Klient, Województwo, ZakupionaIlość, CenaZaSztukę) VALUES (3, 'Janusz Solecki', 'wielkopolskie', 5, 4)
+
+-- Tabela ArtykułySpożywcze:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'ArtykułySpożywcze')
+AND TYPE IN (N'U'))
+DROP TABLE ArtykułySpożywcze
+GO
+
+CREATE TABLE ArtykułySpożywcze
+(IDArtykułu INT NOT NULL,
+KodKategorii VARCHAR(5) NULL,
+Opis VARCHAR (30) NULL)
+
+INSERT INTO ArtykułySpożywcze (IDArtykułu, KodKategorii, Opis) VALUES (1, 'O', 'Jabłko')
+
+INSERT INTO ArtykułySpożywcze (IDArtykułu, KodKategorii, Opis) VALUES (2, 'O', 'Pomarańcza')
+
+INSERT INTO ArtykułySpożywcze (IDArtykułu, KodKategorii, Opis) VALUES (3, 'P', 'Musztarda')
+
+INSERT INTO ArtykułySpożywcze (IDArtykułu, KodKategorii, Opis) VALUES (4, 'W', 'Marchew')
+
+INSERT INTO ArtykułySpożywcze (IDArtykułu, KodKategorii, Opis) VALUES (5, 'N', 'Woda')
+
+-- Tabela KategorieArtykułówSpożywczych:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'KategorieArtykułówSpożywczych')
+AND TYPE IN (N'U'))
+DROP TABLE KategorieArtykułówSpożywczych
+GO
+
+CREATE TABLE KategorieArtykułówSpożywczych
+(IDArtykułu INT NOT NULL,
+Owoc VARCHAR(5) NULL,
+Warzywo VARCHAR (5) NULL,
+Przyprawa VARCHAR (5) NULL,
+Napój VARCHAR (5) NULL,
+Opis VARCHAR (30) NULL)
+
+INSERT INTO KategorieArtykułówSpożywczych (IDArtykułu, Owoc, Warzywo, Przyprawa, Napój, Opis) VALUES (1, 'X', ' ', ' ', ' ', 'Jabłko')
+
+INSERT INTO KategorieArtykułówSpożywczych (IDArtykułu, Owoc, Warzywo, Przyprawa, Napój, Opis) VALUES (2, 'X', ' ', ' ', ' ', 'Pomarańcza')
+
+INSERT INTO KategorieArtykułówSpożywczych (IDArtykułu, Owoc, Warzywo, Przyprawa, Napój, Opis) VALUES (3, ' ', ' ', 'X', ' ', 'Musztarda')
+
+INSERT INTO KategorieArtykułówSpożywczych (IDArtykułu, Owoc, Warzywo, Przyprawa, Napój, Opis) VALUES (4, ' ', 'X', ' ', ' ', 'Marchew')
+
+INSERT INTO KategorieArtykułówSpożywczych (IDArtykułu, Owoc, Warzywo, Przyprawa, Napój, Opis) VALUES (5, ' ', ' ', ' ', 'X', 'Woda')
+
+-- Tabela AmerykaPółnocna:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'AmerykaPółnocna')
+AND TYPE IN (N'U'))
+DROP TABLE AmerykaPółnocna
+GO
+
+CREATE TABLE AmerykaPółnocna
+(IDMiasta INT NOT NULL,
+Kraj VARCHAR(6) NULL,
+Stan VARCHAR (8) NULL,
+Prowincja VARCHAR (7) NULL,
+Miasto VARCHAR (30) NULL)
+
+INSERT INTO AmerykaPółnocna (IDMiasta, Kraj, Stan, Prowincja, Miasto) VALUES (1, 'USA', 'Vermont', ' ', 'Burlington')
+
+INSERT INTO AmerykaPółnocna (IDMiasta, Kraj, Stan, Prowincja, Miasto) VALUES (2, 'Kanada', ' ', 'Quebec', 'Montreal')
+
+INSERT INTO AmerykaPółnocna (IDMiasta, Kraj, Stan, Prowincja, Miasto) VALUES (3, 'USA', 'Kolorado', ' ', 'Denver')
+
+INSERT INTO AmerykaPółnocna (IDMiasta, Kraj, Stan, Prowincja, Miasto) VALUES (4, 'USA', 'Kolorado', ' ', 'Boulder')
+
+INSERT INTO AmerykaPółnocna (IDMiasta, Kraj, Stan, Prowincja, Miasto) VALUES (5, 'Kanada', ' ', 'Alberta', 'Edmonton')
+
+-- Tabela ListaKlientów:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'ListaKlientów')
+AND TYPE IN (N'U'))
+DROP TABLE ListaKlientów
+GO
+
+CREATE TABLE ListaKlientów
+(IDKlienta INT NOT NULL,
+Płeć VARCHAR(5) NULL,
+Wiek INT NULL,
+Dochód INT NULL)
+
+INSERT INTO ListaKlientów (IDKlienta, Płeć, Wiek, Dochód) VALUES (1, 'M', 55, 80000)
+
+INSERT INTO ListaKlientów (IDKlienta, Płeć, Wiek, Dochód) VALUES (2, 'K', 25, 65000)
+
+INSERT INTO ListaKlientów (IDKlienta, Płeć, Wiek, Dochód) VALUES (3, 'M', 35, 40000)
+
+INSERT INTO ListaKlientów (IDKlienta, Płeć, Wiek, Dochód) VALUES (4, 'K', 42, 90000)
+
+INSERT INTO ListaKlientów (IDKlienta, Płeć, Wiek, Dochód) VALUES (5, 'K', 27, 25000)
+
+-- Tabela TytułyUtworów:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'TytułyUtworów')
+AND TYPE IN (N'U'))
+DROP TABLE TytułyUtworów
+GO
+
+CREATE TABLE TytułyUtworów
+(IDUtworu INT NOT NULL,
+Wykonawca VARCHAR(30) NULL,
+Album VARCHAR(30) NULL,
+Tytuł VARCHAR(30) NULL)
+
+INSERT INTO TytułyUtworów (IDUtworu, Wykonawca, Album, Tytuł) VALUES (1, 'The Beatles', 'Revolver', 'Yellow Submarine')
+
+INSERT INTO TytułyUtworów (IDUtworu, Wykonawca, Album, Tytuł) VALUES (2, 'The Beatles', 'Revolver', 'Eleanor Rigby')
+
+INSERT INTO TytułyUtworów (IDUtworu, Wykonawca, Album, Tytuł) VALUES (3, 'The Beatles', 'Abbey Road', 'Here Comes the Sun')
+
+INSERT INTO TytułyUtworów (IDUtworu, Wykonawca, Album, Tytuł) VALUES (4, 'The Rolling Stones', 'Beggars Banquet', 'Sympathy for the Devil')
+
+INSERT INTO TytułyUtworów (IDUtworu, Wykonawca, Album, Tytuł) VALUES (5, 'The Rolling Stones', 'Let It Bleed', 'Gimme Shelter')
+
+INSERT INTO TytułyUtworów (IDUtworu, Wykonawca, Album, Tytuł) VALUES (6, 'Paul McCartney', 'Ram', 'Too Many People')
+
+-- Tabela Opłaty:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Opłaty')
+AND TYPE IN (N'U'))
+DROP TABLE Opłaty
+GO
+
+CREATE TABLE Opłaty
+(IDOpłaty INT NOT NULL,
+Uczeń VARCHAR(30) NULL,
+RodzajOpłaty VARCHAR(30) NULL,
+Opłata INT NULL)
+
+INSERT INTO Opłaty (IDOpłaty, Uczeń, RodzajOpłaty, Opłata) VALUES (1, 'Grzegorz', 'Siłownia', 30)
+
+INSERT INTO Opłaty (IDOpłaty, Uczeń, RodzajOpłaty, Opłata) VALUES (2, 'Grzegorz', 'Obiad', 10)
+
+INSERT INTO Opłaty (IDOpłaty, Uczeń, RodzajOpłaty, Opłata) VALUES (3, 'Grzegorz', 'Wycieczka', 8)
+
+INSERT INTO Opłaty (IDOpłaty, Uczeń, RodzajOpłaty, Opłata) VALUES (4, 'Joanna', 'Siłownia', 30)
+
+INSERT INTO Opłaty (IDOpłaty, Uczeń, RodzajOpłaty, Opłata) VALUES (5, 'Julia', 'Obiad', 10)
+
+-- Tabela Punktacja:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Punktacja')
+AND TYPE IN (N'U'))
+DROP TABLE Punktacja
+GO
+
+CREATE TABLE Punktacja
+(IDPunktacji INT NOT NULL,
+Uczeń VARCHAR(30) NULL,
+OcenianaPraca VARCHAR(30) NULL,
+LiczbaPunktów DECIMAL NULL,
+LiczbaLatNauki INT NULL)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (1, 'Izabela', 'Sprawdzian', 92, 7)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (2, 'Izabela', 'Sprawdzian', 95, 7)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (3, 'Izabela', 'Praca domowa', 84, 7)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (4, 'Hanna', 'Sprawdzian', 62, 8)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (5, 'Hanna', 'Sprawdzian', 81, 8)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaLatNauki) VALUES (6, 'Hanna', 'Praca domowa', 8)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (7, 'Piotr', 'Sprawdzian', 58, 7)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (8, 'Piotr', 'Sprawdzian', 74, 7)
+
+INSERT INTO Punktacja (IDPunktacji, Uczeń, OcenianaPraca, LiczbaPunktów, LiczbaLatNauki) VALUES (9, 'Piotr', 'Praca domowa', 88, 7)
+
+-- Tabela Akcje:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Akcje')
+AND TYPE IN (N'U'))
+DROP TABLE Akcje
+GO
+
+CREATE TABLE Akcje
+(Skrót VARCHAR(10) NOT NULL,
+NazwaFirmy VARCHAR(30) NULL,
+NazwaGiełdy VARCHAR(10) NULL,
+StosunekCenyDoZysku INT NULL)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('AAPL', 'Apple Inc', 'NASDAQ', 14)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('AMZN', 'Amazon.com Inc', 'NASDAQ', 489)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('DIS', 'The Walt Disney Company', 'NYSE', 21)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('GE', 'General Electric Company', 'NYSE', 18)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('GOOG', 'Alphabet Inc', 'NASDAQ', 30)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('HSY', 'The Hershey Company', 'NYSE', 26)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('KRFT', 'Kraft Foods Inc', 'NYSE', 12)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('KO', 'The Coca-Cola Company', 'NYSE', 21)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('MCD', 'McDonalds Corporation', 'NYSE', 18)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('MMM', '3M Company', 'NYSE', 20)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('MSFT', 'Microsoft Corporation', 'NASDAQ', 15)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('ORCL', 'Oracle Corporation', 'NASDAQ', 17)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('SBUX', 'Starbucks Corporation', 'NASDAQ', 357)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('WBA', 'Walgreens Boots Alliance Inc', 'NYSE', 24)
+
+INSERT INTO Akcje (Skrót, NazwaFirmy, NazwaGiełdy, StosunekCenyDoZysku) VALUES ('WMT', 'Wal-Mart Stores Inc', 'NYSE', 15)
+
+-- Tabela WykazProduktów:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'WykazProduktów')
+AND TYPE IN (N'U'))
+DROP TABLE WykazProduktów
+GO
+
+CREATE TABLE WykazProduktów
+(IDProduktu INT NOT NULL,
+Kategoria VARCHAR(30) NULL,
+Podkategoria VARCHAR(30) NULL,
+Produkt VARCHAR(30) NULL,
+LiczbaSztuk INT NULL)
+
+INSERT INTO WykazProduktów (IDProduktu, Kategoria, Podkategoria, Produkt, LiczbaSztuk) VALUES (1, 'Meble', 'Krzesła', 'Czerwony fotel', 3)
+
+INSERT INTO WykazProduktów (IDProduktu, Kategoria, Podkategoria, Produkt, LiczbaSztuk) VALUES (2, 'Meble', 'Krzesła', 'Zielony fotel', 2)
+
+INSERT INTO WykazProduktów (IDProduktu, Kategoria, Podkategoria, Produkt, LiczbaSztuk) VALUES (3, 'Meble', 'Biurka', 'Niebieskie biurko komputerowe', 4)
+
+INSERT INTO WykazProduktów (IDProduktu, Kategoria, Podkategoria, Produkt, LiczbaSztuk) VALUES (4, 'ArtykułyPapiernicze', 'PapieryDoDrukarki', 'Biały papier do drukarki', 5)
+
+INSERT INTO WykazProduktów (IDProduktu, Kategoria, Podkategoria, Produkt, LiczbaSztuk) VALUES (5, 'ArtykułyPapiernicze', 'PapieryDoDrukarki', 'Różowy papier do drukarki', 2)
+
+INSERT INTO WykazProduktów (IDProduktu, Kategoria, Podkategoria, Produkt, LiczbaSztuk) VALUES (6, 'ArtykułyPapiernicze', 'Notatniki', 'Notatnik z białymi kartkami', 4)
+
+-- Tabela ZestawienieSprzedaży:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'ZestawienieSprzedaży')
+AND TYPE IN (N'U'))
+DROP TABLE ZestawienieSprzedaży
+GO
+
+CREATE TABLE ZestawienieSprzedaży
+(DataSprzedaży DATE NULL,
+IDKlienta INT NULL,
+Województwo VARCHAR(10) NULL,
+KanałSprzedaży VARCHAR(30) NULL,
+KwotaSprzedaży INT NULL)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-01', 101, 'MAZ', 'Internet', 50)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-01', 102, 'MAZ', 'PunktSprzedażyDetalicznej', 30)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-01', 103, 'PDL', 'Internet', 120)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-02', 145, 'PDL', 'PunktSprzedażyDetalicznej', 90)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-02', 180, 'MAZ', 'PunktSprzedażyDetalicznej', 300)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-02', 181, 'PDL', 'Internet', 130)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-02', 182, 'MAZ', 'Internet', 520)
+
+INSERT INTO ZestawienieSprzedaży (DataSprzedaży, IDKlienta, Województwo, KanałSprzedaży, KwotaSprzedaży) VALUES ('2017-04-02', 184, 'MAZ', 'PunktSprzedażyDetalicznej', 80)
+
+-- Tabela Zamówienia:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Zamówienia')
+AND TYPE IN (N'U'))
+DROP TABLE Zamówienia
+GO
+
+CREATE TABLE Zamówienia
+(IDZamówienia INT NOT NULL,
+IDKlienta INT NOT NULL,
+DataZamówienia DATE NULL,
+KwotaZamówienia FLOAT NULL)
+
+INSERT INTO Zamówienia (IDZamówienia, IDKlienta, DataZamówienia, KwotaZamówienia) VALUES (1, 1, '2016-09-01', 10)
+
+INSERT INTO Zamówienia (IDZamówienia, IDKlienta, DataZamówienia, KwotaZamówienia) VALUES (2, 2, '2016-09-02', 12.5)
+
+INSERT INTO Zamówienia (IDZamówienia, IDKlienta, DataZamówienia, KwotaZamówienia) VALUES (3, 2, '2016-09-03', 18)
+
+INSERT INTO Zamówienia (IDZamówienia, IDKlienta, DataZamówienia, KwotaZamówienia) VALUES (4, 3, '2016-09-15', 20)
+
+-- Tabla Zwroty:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Zwroty')
+AND TYPE IN (N'U'))
+DROP TABLE Zwroty
+GO
+
+CREATE TABLE Zwroty
+(IDZwrotu INT NOT NULL,
+IDZamówienia INT NULL,
+DataZwrotu DATE NULL,
+KwotaZwrotu FLOAT NULL)
+
+INSERT INTO Zwroty (IDZwrotu, IDZamówienia, DataZwrotu, KwotaZwrotu) VALUES (1, 1, '2016-09-02', 5)
+
+INSERT INTO Zwroty (IDZwrotu, IDZamówienia, DataZwrotu, KwotaZwrotu) VALUES (2, 3, '2016-09-18', 18)
+
+-- Tabela KlasyfikacjaFilmów:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'KlasyfikacjaFilmów')
+AND TYPE IN (N'U'))
+DROP TABLE KlasyfikacjaFilmów
+GO
+
+CREATE TABLE KlasyfikacjaFilmów
+(IDKlasyfikacji INT NOT NULL,
+Klasyfikacja VARCHAR(10) NULL,
+OpisKlasyfikacji VARCHAR(50) NULL)
+
+INSERT INTO KlasyfikacjaFilmów (IDKlasyfikacji, Klasyfikacja, OpisKlasyfikacji) VALUES (1, 'G', 'Dozwolony dla wszystkich grup wiekowych')
+
+INSERT INTO KlasyfikacjaFilmów (IDKlasyfikacji, Klasyfikacja, OpisKlasyfikacji) VALUES (2, 'PG', 'Wskazany nadzór rodzica/rodziców')
+
+INSERT INTO KlasyfikacjaFilmów (IDKlasyfikacji, Klasyfikacja, OpisKlasyfikacji) VALUES (3, 'PG-13', 'Szczególnie wskazany nadzór rodzica/rodziców')
+
+INSERT INTO KlasyfikacjaFilmów (IDKlasyfikacji, Klasyfikacja, OpisKlasyfikacji) VALUES (4, 'R', 'Film można obejrzeć jedynie z rodzicami')
+
+INSERT INTO KlasyfikacjaFilmów (IDKlasyfikacji, Klasyfikacja, OpisKlasyfikacji) VALUES (5, 'NC-17', 'Film jedynie dla osób powyżej 17. roku życia')
+
+-- Tabela RozmiaryKoszulek:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'RozmiaryKoszulek')
+AND TYPE IN (N'U'))
+DROP TABLE RozmiaryKoszulek
+GO
+
+CREATE TABLE RozmiaryKoszulek
+(IDRozmiaru INT NOT NULL,
+Rozmiar VARCHAR(10) NULL)
+
+INSERT INTO RozmiaryKoszulek (IDRozmiaru, Rozmiar) VALUES (1, 'Mały')
+
+INSERT INTO RozmiaryKoszulek (IDRozmiaru, Rozmiar) VALUES (2, 'Średni')
+
+INSERT INTO RozmiaryKoszulek (IDRozmiaru, Rozmiar) VALUES (3, 'Duży')
+
+-- Tabela KoloryKoszulek:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'KoloryKoszulek')
+AND TYPE IN (N'U'))
+DROP TABLE KoloryKoszulek
+GO
+
+CREATE TABLE KoloryKoszulek
+(IDKoloru INT NOT NULL,
+Kolor VARCHAR(10) NULL)
+
+INSERT INTO KoloryKoszulek (IDKoloru, Kolor) VALUES (1, 'Czerwony')
+
+INSERT INTO KoloryKoszulek (IDKoloru, Kolor) VALUES (2, 'Niebieski')
+
+INSERT INTO KoloryKoszulek (IDKoloru, Kolor) VALUES (3, 'Zielony')
+
+INSERT INTO KoloryKoszulek (IDKoloru, Kolor) VALUES (4, 'Żółty')
+
+-- Tabela KluczoweDaty:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'KluczoweDaty')
+AND TYPE IN (N'U'))
+DROP TABLE KluczoweDaty
+GO
+
+CREATE TABLE KluczoweDaty
+(OstatniaDataPrzetwarzania DATE NULL,
+BieżącyRokPodatkowy INT NULL,
+BieżącyKwartałPodatkowy VARCHAR(10) NULL)
+
+INSERT INTO KluczoweDaty (OstatniaDataPrzetwarzania, BieżącyRokPodatkowy, BieżącyKwartałPodatkowy) VALUES ('2016-09-15', 2016, 'Q3')
+
+-- Tabela Kadry:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Kadry')
+AND TYPE IN (N'U'))
+DROP TABLE Kadry
+GO
+
+CREATE TABLE Kadry
+(IDPracownika INT NOT NULL,
+Pracownik VARCHAR(30) NULL,
+IDPrzełożonego INT NULL)
+
+INSERT INTO Kadry (IDPracownika, Pracownik) VALUES (1, 'Zuzanna Kowalska')
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (2, 'Luiza Warecka', 1)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (3, 'Robert Pieczyński', 1)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (4, 'Sebastian Feldman', 1)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (5, 'Karolina Białek', 2)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (6, 'Joanna Borecka', 2)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (7, 'Juliusz Morawski', 3)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (8, 'Anna Adamska', 4)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (9, 'Jacek Śpiewak', 4)
+
+INSERT INTO Kadry (IDPracownika, Pracownik, IDPrzełożonego) VALUES (10, 'Amelia Wojnacka', 5)
+
+-- Tabela Użytkownicy:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Użytkownicy')
+AND TYPE IN (N'U'))
+DROP TABLE Użytkownicy
+GO
+
+CREATE TABLE Użytkownicy
+(IDUżytkownika INT NOT NULL,
+NazwaUżytkownika VARCHAR(30) NULL)
+
+INSERT INTO Użytkownicy (IDUżytkownika, NazwaUżytkownika)
+VALUES (1, 'Cecylia Romanowska')
+
+INSERT INTO Użytkownicy (IDUżytkownika, NazwaUżytkownika)
+VALUES (2, 'Elżbieta Borecka')
+
+INSERT INTO Użytkownicy (IDUżytkownika, NazwaUżytkownika)
+VALUES (3, 'Romuald Gawliński')
+
+INSERT INTO Użytkownicy (IDUżytkownika, NazwaUżytkownika)
+VALUES (4, 'Anna Wodecka')
+
+-- Tabela Transakcje:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Transakcje')
+AND TYPE IN (N'U'))
+DROP TABLE Transakcje
+GO
+
+CREATE TABLE Transakcje
+(IDTransakcji INT NOT NULL,
+IDUżytkownika INT NULL,
+KwotaTransakcji FLOAT NULL,
+SposóbZapłaty VARCHAR(20) NULL)
+
+INSERT INTO Transakcje (IDTransakcji, IDUżytkownika, KwotaTransakcji, SposóbZapłaty)
+VALUES (1, 1, 22.25, 'Gotówka')
+
+INSERT INTO Transakcje (IDTransakcji, IDUżytkownika, KwotaTransakcji, SposóbZapłaty)
+VALUES (2, 2, 11.75, 'Karta kredytowa')
+
+INSERT INTO Transakcje (IDTransakcji, IDUżytkownika, KwotaTransakcji, SposóbZapłaty)
+VALUES (3, 2, 5, 'Karta kredytowa')
+
+INSERT INTO Transakcje (IDTransakcji, IDUżytkownika, KwotaTransakcji, SposóbZapłaty)
+VALUES (4, 2, 8, 'Gotówka')
+
+INSERT INTO Transakcje (IDTransakcji, IDUżytkownika, KwotaTransakcji, SposóbZapłaty)
+VALUES (5, 3, 9.33, 'Karta kredytowa')
+
+INSERT INTO Transakcje (IDTransakcji, IDUżytkownika, KwotaTransakcji, SposóbZapłaty)
+VALUES (6, 3, 10.11, 'Karta kredytowa')
+
+-- Tabela ZwrotyTowarów:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'ZwrotyTowarów')
+AND TYPE IN (N'U'))
+DROP TABLE ZwrotyTowarów
+GO
+
+CREATE TABLE ZwrotyTowarów
+(IDZwrotu INT NOT NULL,
+IDKlienta INT NOT NULL,
+DataZwrotu DATE NULL,
+KwotaZwrotu FLOAT NULL)
+
+INSERT INTO ZwrotyTowarów (IDZwrotu, IDKlienta, DataZwrotu, KwotaZwrotu) VALUES (1, 1, '2016-09-10', 2)
+
+INSERT INTO ZwrotyTowarów (IDZwrotu, IDKlienta, DataZwrotu, KwotaZwrotu) VALUES (2, 2, '2016-09-15', 15)
+
+INSERT INTO ZwrotyTowarów (IDZwrotu, IDKlienta, DataZwrotu, KwotaZwrotu) VALUES (3, 3, '2016-09-28', 3)
+
+-- Tabela Kontrahenci:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Kontrahenci')
+AND TYPE IN (N'U'))
+DROP TABLE Kontrahenci
+GO
+
+CREATE TABLE Kontrahenci
+(IDKontrahenta INT IDENTITY NOT NULL,
+ImięKontrahenta VARCHAR(30) NULL,
+NazwiskoKontrahenta VARCHAR(30) NULL,
+Województwo VARCHAR(10) NULL)
+
+INSERT INTO Kontrahenci (ImięKontrahenta, NazwiskoKontrahenta, Województwo) VALUES ('Janusz', 'Bentlewski', 'POM')
+
+INSERT INTO Kontrahenci (ImięKontrahenta, NazwiskoKontrahenta, Województwo) VALUES ('Michał', 'Rajewski', 'MAZ')
+
+INSERT INTO Kontrahenci (ImięKontrahenta, NazwiskoKontrahenta, Województwo) VALUES ('Emilia', 'Pieczyńska', 'LBU')
+
+-- Tabela NowiKontrahenci:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'NowiKontrahenci')
+AND TYPE IN (N'U'))
+DROP TABLE NowiKontrahenci
+GO
+
+CREATE TABLE NowiKontrahenci
+(Województwo VARCHAR(10) NULL,
+Nazwa1 VARCHAR(30) NULL,
+Nazwa2 VARCHAR(30) NULL)
+
+INSERT INTO NowiKontrahenci (Województwo, Nazwa1, Nazwa2) VALUES ('PKR', 'Robert', 'Hołdys')
+
+INSERT INTO NowiKontrahenci (Województwo, Nazwa1, Nazwa2) VALUES ('MAZ', 'Beata', 'Kowalska')
+
+INSERT INTO NowiKontrahenci (Województwo, Nazwa1, Nazwa2) VALUES ('PKR', 'Grażyna', 'Mielniczuk')
+
+-- Tabela Dostawcy:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'Dostawcy')
+AND TYPE IN (N'U'))
+DROP TABLE Dostawcy
+GO
+
+CREATE TABLE Dostawcy
+(IDDostawcy INT NOT NULL,
+Województwo VARCHAR(10) NULL,
+KodPocztowy VARCHAR(10) NULL)
+
+INSERT INTO Dostawcy (IDDostawcy, Województwo, KodPocztowy) VALUES (1, 'POM', '77-131')
+
+INSERT INTO Dostawcy (IDDostawcy, Województwo, KodPocztowy) VALUES (2, 'LBL', '21-515')
+
+INSERT INTO Dostawcy (IDDostawcy, Województwo, KodPocztowy) VALUES (3, 'MAZ', '09-166')
+
+INSERT INTO Dostawcy (IDDostawcy, Województwo, KodPocztowy) VALUES (4, 'PKR', '36-221')
+
+INSERT INTO Dostawcy (IDDostawcy, Województwo, KodPocztowy) VALUES (5, 'ŁDZ', '97-407')
+
+-- Tabela ZmianaDanychDostawców:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'ZmianaDanychDostawców')
+AND TYPE IN (N'U'))
+DROP TABLE ZmianaDanychDostawców
+GO
+
+CREATE TABLE ZmianaDanychDostawców
+(IDZmiany INT NOT NULL,
+IDDostawcy INT NULL,
+Województwo VARCHAR(10) NULL,
+KodPocztowy VARCHAR(10) NULL)
+
+INSERT INTO ZmianaDanychDostawców (IDZmiany, IDDostawcy, Województwo, KodPocztowy) VALUES (1, 1, 'POM', '77-121')
+
+INSERT INTO ZmianaDanychDostawców (IDZmiany, IDDostawcy, Województwo, KodPocztowy) VALUES (2, 2, 'LBL', '21-516')
+
+INSERT INTO ZmianaDanychDostawców (IDZmiany, IDDostawcy, Województwo, KodPocztowy) VALUES (3, 5, 'ZPM', '72-427')
+
+-- Tabela PowiązanaTabela:
+
+IF EXISTS
+(SELECT * FROM sys.objects
+WHERE OBJECT_ID = OBJECT_ID (N'PowiązanaTabela')
+AND TYPE IN (N'U'))
+DROP TABLE PowiązanaTabela
+GO
+
+CREATE TABLE PowiązanaTabela
+(PierwszaKolumna INT NOT NULL PRIMARY KEY)
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 2
+- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT * FROM Klienci
+
+SELECT *
+FROM Klienci
+
+SELECT
+-- to jest pierwszy komentarz
+ImięKlienta,
+NazwiskoKlienta -- to jest drugi komentarz
+FROM Klienci
+
+SELECT
+/* to jest pierwszy komentarz */
+ImięKlienta,
+NazwiskoKlienta /*to jest drugi komentarz
+to jest dalsza część drugiego komentarza
+tutaj znajduje się koniec drugiego komentarza */
+FROM Klienci
+
+SELECT NazwiskoKlienta
+FROM Klienci
+
+SELECT
+ImięKlienta,
+NazwiskoKlienta
+FROM Klienci
+
+
+- - - - - - — - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 3- - - - - - — - - - - - - - -
+
+
+
+SELECT
+'Imię klienta:',
+ImięKlienta
+FROM Sprzedaż
+
+SELECT
+5,
+ImięKlienta
+FROM Sprzedaż
+
+SELECT
+IDSprzedaży,
+ZakupionaIlość,
+CenaZaSztukę,
+ZakupionaIlość * CenaZaSztukę
+FROM Sprzedaż
+
+SELECT
+IDSprzedaży,
+ImięKlienta,
+NazwiskoKlienta,
+ImięKlienta + ' ' + NazwiskoKlienta
+FROM Sprzedaż
+
+SELECT
+IDSprzedaży,
+ImięKlienta,
+NazwiskoKlienta,
+ImięKlienta + ' ' + NazwiskoKlienta AS 'Nazwa'
+FROM Sprzedaż
+
+SELECT
+IDSprzedaży,
+ImięKlienta,
+NazwiskoKlienta,
+ImięKlienta + ' ' + NazwiskoKlienta Nazwa
+FROM Sprzedaż
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 4
+- - - - - - — - - - - - - - - - - - - -
+
+SELECT
+LEFT('jasnoniebieski',5) AS Wynik
+
+SELECT
+RIGHT('jasnoniebieski',9) AS Wynik
+
+SELECT
+SUBSTRING('czarnaowca', 7, 4) AS Wynik
+
+SELECT
+LTRIM('          dwa jabłka') AS Wynik
+
+SELECT 
+UPPER ('Abraham Lincoln') AS 'Konwersja na wielkie litery',
+LOWER ('ABRAHAM LINCOLN') AS 'Konwersja na małe litery'
+
+SELECT GETDATE()
+
+SELECT DATEPART(month,'2017-05-06')
+
+SELECT DATEPART(day,'2017-05-06')
+
+SELECT DATEPART(week,'2017-05-06')
+
+SELECT DATEPART(weekday,'2017-05-06')
+
+SELECT DATEDIFF(day,'2017-07-08','2017-08-14')
+
+SELECT DATEDIFF(week,'2017-07-08','2017-08-14')
+
+SELECT DATEDIFF(month,'2017-07-08','2017-08-14')
+
+SELECT DATEDIFF(year,'2017-07-08','2017-08-14')
+
+SELECT ROUND(712.863,3)
+
+SELECT ROUND(712.863,2)
+
+SELECT ROUND(712.863,1)
+
+SELECT ROUND(712.863,0)
+
+SELECT ROUND(712.863,-1)
+
+SELECT ROUND(712.863,-2)
+
+SELECT PI()
+
+SELECT ROUND(PI(),2)
+
+SELECT POWER(5,2) AS 'Liczba 5 podniesiona do kwadratu'
+
+SELECT POWER(25,.5) AS 'Pierwiastek kwadratowy z liczby 25'
+
+SELECT
+'2017-04-11' AS 'Data Pierwotna',
+CAST ('2017-04-11' AS DATETIME) AS 'Data Przekonwertowana'
+
+SELECT
+Opis,
+Waga
+FROM Produkty
+
+SELECT
+Opis,
+ISNULL(CAST(Waga AS VARCHAR), 'Nieznana') AS Waga
+FROM Produkty
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 5- - - - - - — - - - - - - - - - - - - -
+
+
+SELECT
+ImięSprzedawcy,
+NazwiskoSprzedawcy
+FROM Sprzedawcy
+ORDER BY NazwiskoSprzedawcy
+
+SELECT
+ImięSprzedawcy,
+NazwiskoSprzedawcy
+FROM Sprzedawcy
+ORDER BY ImięSprzedawcy
+
+SELECT
+ImięSprzedawcy,
+NazwiskoSprzedawcy
+FROM Sprzedawcy
+ORDER BY ImięSprzedawcy ASC
+
+SELECT
+ImięSprzedawcy,
+NazwiskoSprzedawcy
+FROM Sprzedawcy
+ORDER BY ImięSprzedawcy DESC
+
+SELECT
+ImięSprzedawcy,
+NazwiskoSprzedawcy
+FROM Sprzedawcy
+ORDER BY NazwiskoSprzedawcy, ImięSprzedawcy
+
+SELECT
+NazwiskoSprzedawcy +', ' + ImięSprzedawcy AS Nazwa
+FROM Sprzedawcy
+ORDER BY Nazwa
+
+SELECT
+ImięSprzedawcy,
+NazwiskoSprzedawcy
+FROM Sprzedawcy
+ORDER BY NazwiskoSprzedawcy + ImięSprzedawcy
+
+SELECT DaneLiczbowe
+FROM SortowanieDanych
+ORDER BY DaneLiczbowe
+
+SELECT
+ISNULL(DaneLiczbowe, 0) AS 'DaneLiczbowe'
+FROM SortowanieDanych
+ORDER BY ISNULL(DaneLiczbowe, 0)
+
+SELECT
+DaneZnakowe
+FROM SortowanieDanych
+ORDER BY DaneZnakowe
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 6
+- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+ImięKlienta,
+NazwiskoKlienta,
+ZakupionaIlość
+FROM Sprzedaż
+WHERE NazwiskoKlienta = 'Solecki'
+
+SELECT
+ImięKlienta,
+NazwiskoKlienta,
+ZakupionaIlość
+FROM Sprzedaż
+WHERE ZakupionaIlość = 5
+
+SELECT
+ImięKlienta,
+NazwiskoKlienta,
+ZakupionaIlość
+FROM Sprzedaż
+WHERE ZakupionaIlość > 6
+
+SELECT
+ImięKlienta,
+NazwiskoKlienta
+FROM Sprzedaż
+WHERE NazwiskoKlienta > 'K'
+
+SELECT
+TOP 3
+Tytuł AS 'Tytuł książki',
+SprzedażWBieżącymMiesiącu AS 'Sprzedana ilość'
+FROM Książki
+ORDER BY SprzedażWBieżącymMiesiącu DESC
+
+SELECT
+TOP 1
+Tytuł AS 'Tytuł książki',
+SprzedażWBieżącymMiesiącu AS 'Sprzedana ilość'
+FROM Książki
+WHERE Autor = 'Szekspir'
+ORDER BY SprzedażWBieżącymMiesiącu DESC
+
+SELECT
+TytułFilmu AS 'Film'
+FROM Filmy
+WHERE TytułFilmu LIKE '%MIŁOŚĆ%'
+
+SELECT
+TytułFilmu AS 'Film'
+FROM Filmy
+WHERE TytułFilmu LIKE 'MIŁOŚĆ%'
+
+SELECT
+TytułFilmu AS 'Film'
+FROM Filmy
+WHERE TytułFilmu LIKE '%MIŁOŚĆ'
+
+SELECT
+TytułFilmu AS 'Film'
+FROM Filmy
+WHERE TytułFilmu LIKE '% MIŁOŚĆ %'
+
+SELECT
+Imię,
+Nazwisko
+FROM Aktorzy
+WHERE Imię LIKE '_ARY'
+
+SELECT
+Imię,
+Nazwisko
+FROM Aktorzy
+WHERE Imię LIKE 'J_N'
+
+SELECT
+Imię,
+Nazwisko
+FROM Aktorzy
+WHERE Imię LIKE '[CM]ARY'
+
+SELECT
+Imię,
+Nazwisko
+FROM Aktorzy
+WHERE Imię LIKE '[^CM]ARY'
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 7
+- - - - - - — - - - - - - - - - - - - -
+
+
+SELECT
+Klient,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE ZakupionaIlość > 3
+AND ZakupionaIlość < 7
+
+SELECT
+Klient,
+ZakupionaIlość,
+CenaZaSztukę
+FROM RejestrZamówień
+WHERE ZakupionaIlość > 8
+OR CenaZaSztukę > 3
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE Województwo = 'pomorskie'
+OR Województwo = 'mazowieckie'
+AND ZakupionaIlość > 8 
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE (Województwo = 'pomorskie'
+OR Województwo = 'mazowieckie')
+AND ZakupionaIlość > 8
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE Województwo = 'wielkopolskie'
+OR (Województwo = 'pomorskie'
+AND (ZakupionaIlość >= 3
+AND ZakupionaIlość <= 10))
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość 
+FROM RejestrZamówień
+WHERE NOT Województwo = 'wielkopolskie'
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE Województwo <> 'wielkopolskie'
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość 
+FROM RejestrZamówień
+WHERE NOT (Województwo = 'pomorskie'
+OR Województwo = 'wielkopolskie')
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość 
+FROM RejestrZamówień
+WHERE Województwo <> 'pomorskie'
+AND Województwo <> 'wielkopolskie'
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość 
+FROM RejestrZamówień
+WHERE NOT (Województwo = 'pomorskie'
+AND ZakupionaIlość > 3)
+
+SELECT
+Klient,
+Województwo,
+ZakupionaIlość 
+FROM RejestrZamówień
+WHERE Województwo <> 'pomorskie'
+OR ZakupionaIlość <= 3
+
+SELECT
+Klient,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE ZakupionaIlość >= 5
+AND ZakupionaIlość <= 20
+
+SELECT
+Klient,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE ZakupionaIlość BETWEEN 5 AND 20
+
+SELECT
+Klient,
+ZakupionaIlość
+FROM RejestrZamówień
+WHERE ZakupionaIlość NOT BETWEEN 5 AND 20
+
+SELECT
+Klient,
+Województwo
+FROM RejestrZamówień
+WHERE Województwo = 'pomorskie'
+OR Województwo = 'wielkopolskie'
+
+SELECT
+Klient,
+Województwo
+FROM RejestrZamówień
+WHERE Województwo IN ('pomorskie', 'wielkopolskie')
+
+SELECT
+Klient,
+Województwo
+FROM RejestrZamówień
+WHERE Województwo NOT IN ('pomorskie', 'wielkopolskie')
+
+SELECT
+Opis,
+Waga
+FROM Produkty
+WHERE Waga = 0
+
+SELECT
+Opis,
+Waga
+FROM Produkty
+WHERE Waga = 0
+OR Waga IS NULL
+
+SELECT
+Opis,
+Waga
+FROM Produkty
+WHERE ISNULL(Waga, 0) = 0
+
+SELECT
+Opis,
+ISNULL (Waga, 0) AS 'Waga'
+FROM Produkty
+WHERE Waga = 0
+OR Waga IS NULL
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 8
+- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+CASE KodKategorii
+WHEN 'O' THEN 'Owoc'
+WHEN 'W' THEN 'Warzywo'
+ELSE 'Inne'
+END AS 'Kategoria',
+Opis
+FROM ArtykułySpożywcze
+
+SELECT
+CASE
+WHEN KodKategorii = 'O' THEN 'Owoc'
+WHEN KodKategorii = 'W' THEN 'Warzywo'
+ELSE 'Inne'
+END AS 'Kategoria',
+Opis
+FROM ArtykułySpożywcze
+
+SELECT
+CASE
+WHEN Owoc = 'X' THEN 'Owoc'
+WHEN Warzywo = 'X' THEN 'Warzywo'
+ELSE 'Inne'
+END AS 'Kategoria',
+Opis
+FROM KategorieArtykułówSpożywczych
+
+SELECT *
+FROM AmerykaPółnocna
+ORDER BY
+Kraj,
+CASE Kraj
+WHEN 'USA' THEN Stan
+WHEN 'Kanada' THEN Prowincja
+ELSE Stan
+END,
+Miasto
+
+SELECT *
+FROM ListaKlientów
+WHERE Dochód >
+CASE
+WHEN Płeć = 'M' AND Wiek >= 50 THEN 75000
+WHEN Płeć = 'K' AND Wiek >= 35 THEN 60000
+ELSE 50000
+END
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 9
+- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+DISTINCT
+Wykonawca
+FROM TytułyUtworów
+ORDER BY Wykonawca
+
+SELECT
+DISTINCT
+Wykonawca,
+Album
+FROM TytułyUtworów
+ORDER BY Wykonawca, Album
+
+SELECT
+SUM (Opłata) AS 'Sumaryczna opłata za siłownię'
+FROM Opłaty
+WHERE RodzajOpłaty = 'Siłownia'
+
+SELECT
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów za sprawdzian'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+
+SELECT
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów za sprawdzian',
+MIN (LiczbaPunktów) AS 'Minimalna liczba punktów za sprawdzian',
+MAX (LiczbaPunktów) AS 'Maksymalna liczba punktów za sprawdzian'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+
+SELECT
+COUNT (*) AS 'Liczba wierszy z ocenianą pracą domową'
+FROM Punktacja
+WHERE OcenianaPraca = 'Praca domowa'
+
+SELECT
+COUNT (LiczbaPunktów) AS 'Liczba wierszy z punktami za pracę domową'
+FROM Punktacja
+WHERE OcenianaPraca = 'Praca domowa'
+
+SELECT
+COUNT (DISTINCT RodzajOpłaty) AS 'Liczba rodzajów opłaty'
+FROM Opłaty
+
+SELECT
+OcenianaPraca AS 'Oceniana praca',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów'
+FROM Punktacja
+GROUP BY OcenianaPraca
+ORDER BY OcenianaPraca
+
+SELECT
+OcenianaPraca AS 'Oceniana praca',
+Uczeń AS 'Uczeń',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów'
+FROM Punktacja
+GROUP BY OcenianaPraca, Uczeń
+ORDER BY OcenianaPraca, Uczeń
+
+SELECT
+OcenianaPraca AS 'Oceniana praca',
+Uczeń AS 'Uczeń',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów'
+FROM Punktacja
+GROUP BY OcenianaPraca, Uczeń
+ORDER BY Uczeń, OcenianaPraca
+
+SELECT
+Uczeń AS 'Uczeń',
+OcenianaPraca AS 'Oceniana praca',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów'
+FROM Punktacja
+GROUP BY OcenianaPraca, Uczeń
+ORDER BY Uczeń, OcenianaPraca
+
+SELECT
+Uczeń AS 'Uczeń',
+OcenianaPraca AS 'Oceniana praca',
+LiczbaPunktów AS 'Liczba punktów'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+AND LiczbaPunktów >= 70
+ORDER BY Uczeń, LiczbaPunktów
+
+SELECT
+Uczeń AS 'Uczeń',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów za sprawdzian'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+GROUP BY Uczeń
+HAVING AVG (LiczbaPunktów) >= 70
+ORDER BY Uczeń
+
+SELECT
+Uczeń AS 'Uczeń',
+OcenianaPraca AS 'Oceniana praca',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+GROUP BY Uczeń, OcenianaPraca
+HAVING AVG (LiczbaPunktów) >= 70
+ORDER BY Uczeń
+
+SELECT
+CASE KodKategorii
+WHEN 'O' THEN 'Owoc'
+WHEN 'W' THEN 'Warzywo'
+ELSE 'Inne'
+END AS 'Kategoria',
+COUNT(*) AS 'LiczbaProduktów'
+FROM ArtykułySpożywcze
+GROUP BY
+CASE KodKategorii
+WHEN 'O' THEN 'Owoc'
+WHEN 'W' THEN 'Warzywo'
+ELSE 'Inne'
+END
+
+SELECT
+Uczeń AS 'Uczeń',
+LiczbaLatNauki AS 'Liczba lat nauki',
+OcenianaPraca AS 'Oceniana praca',
+AVG (LiczbaPunktów) AS 'Średnia liczba punktów'
+FROM Punktacja
+WHERE OcenianaPraca = 'Sprawdzian'
+GROUP BY Uczeń, LiczbaLatNauki, OcenianaPraca
+HAVING AVG(LiczbaPunktów) >=
+CASE
+WHEN LiczbaLatNauki = 7 THEN 70
+WHEN LiczbaLatNauki = 8 THEN 75
+ELSE 80
+END
+ORDER BY Uczeń
+
+SELECT
+ROW_NUMBER() OVER (ORDER BY StosunekCenyDoZysku) AS 'Numer wiersza',
+Skrót AS 'Symbol',
+NazwaFirmy AS 'Nazwa',
+NazwaGiełdy AS 'Giełda',
+StosunekCenyDoZysku AS 'Stosunek ceny do zysku'
+FROM Akcje
+ORDER BY StosunekCenyDoZysku
+
+SELECT
+ROW_NUMBER() OVER (ORDER BY StosunekCenyDoZysku) AS 'Numer wiersza',
+RANK() OVER (ORDER BY StosunekCenyDoZysku) AS 'Wynik funkcji rank',
+DENSE_RANK() OVER (ORDER BY StosunekCenyDoZysku) AS 'Wynik funkcji dense_rank',
+Skrót AS 'Symbol',
+StosunekCenyDoZysku AS 'Stosunek ceny do zysku'
+FROM Akcje
+ORDER BY StosunekCenyDoZysku
+
+SELECT
+NTILE(4) OVER (ORDER BY StosunekCenyDoZysku) AS 'Kwartyl',
+NTILE(10) OVER (ORDER BY StosunekCenyDoZysku) AS 'Decyl',
+Skrót AS 'Symbol',
+StosunekCenyDoZysku AS 'Stosunek ceny do zysku'
+FROM Akcje
+ORDER BY StosunekCenyDoZysku
+
+SELECT
+NazwaGiełdy AS 'Giełda',
+ROW_NUMBER() OVER (PARTITION BY NazwaGiełdy ORDER BY StosunekCenyDoZysku) AS 'Numer wiersza w ramach danej giełdy',
+Skrót AS 'Symbol',
+StosunekCenyDoZysku AS 'Stosunek ceny do zysku'
+FROM Akcje
+ORDER BY NazwaGiełdy, StosunekCenyDoZysku
+
+SELECT
+NazwaGiełdy AS 'Giełda',
+NTILE(4) OVER (PARTITION BY NazwaGiełdy ORDER BY StosunekCenyDoZysku) AS 'Numer kwartyla',
+Skrót AS 'Symbol',
+StosunekCenyDoZysku AS 'Stosunek ceny do zysku'
+FROM Akcje
+ORDER BY NazwaGiełdy, StosunekCenyDoZysku
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 10
+- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+Kategoria,
+Podkategoria,
+SUM(LiczbaSztuk) AS 'Liczba sztuk'
+FROM WykazProduktów
+GROUP BY Kategoria, Podkategoria
+ORDER BY Kategoria, Podkategoria
+
+SELECT
+Kategoria,
+Podkategoria,
+SUM(LiczbaSztuk) AS 'Liczba sztuk'
+FROM WykazProduktów
+GROUP BY ROLLUP(Kategoria, Podkategoria)
+
+SELECT
+Kategoria,
+Podkategoria,
+SUM(LiczbaSztuk) AS 'Liczba sztuk'
+FROM WykazProduktów
+GROUP BY ROLLUP(Kategoria, Podkategoria)
+ORDER BY Kategoria, Podkategoria
+
+SELECT
+Kategoria,
+Podkategoria,
+SUM(LiczbaSztuk) AS 'Liczba sztuk',
+GROUPING(Kategoria) AS 'Kategoria – wynik funkcji GROUPING',
+GROUPING(Podkategoria) AS 'Podkategoria – wynik funkcji GROUPING'
+FROM WykazProduktów
+GROUP BY ROLLUP(Kategoria, Podkategoria)
+
+SELECT
+ISNULL(Kategoria,'') AS 'Kategoria',
+ISNULL(Podkategoria, '') AS 'Podkategoria',
+SUM(LiczbaSztuk) AS 'Liczba sztuk',
+CASE WHEN GROUPING(Kategoria) = 1 then 'Suma łączna'
+WHEN GROUPING(Podkategoria) = 1 then 'Suma częściowa'
+ELSE ' ' END AS 'Suma częściowa/Suma łączna'
+FROM WykazProduktów
+GROUP BY ROLLUP(Kategoria, Podkategoria)
+
+SELECT
+CASE
+WHEN GROUPING(Kategoria) = 1 THEN 'SUMA ŁĄCZNA'
+WHEN GROUPING(Podkategoria) = 1 THEN 'SUMA CZĘŚCIOWA'
+ELSE ISNULL(Kategoria,'') END AS 'Kategoria',
+ISNULL(Podkategoria, '') AS 'Podkategoria',
+SUM(LiczbaSztuk) AS 'Liczba sztuk'
+FROM WykazProduktów
+GROUP BY ROLLUP(Kategoria, Podkategoria)
+
+SELECT
+Województwo,
+KanałSprzedaży AS 'Kanał sprzedaży',
+SUM(KwotaSprzedaży) AS 'Kwota sprzedaży'
+FROM ZestawienieSprzedaży
+GROUP BY Województwo, KanałSprzedaży
+ORDER BY Województwo, KanałSprzedaży
+
+SELECT
+Województwo,
+KanałSprzedaży AS 'Kanał sprzedaży',
+SUM(KwotaSprzedaży) AS 'Kwota sprzedaży'
+FROM ZestawienieSprzedaży
+GROUP BY CUBE(Województwo, KanałSprzedaży)
+ORDER BY Województwo, KanałSprzedaży
+
+SELECT
+Województwo,
+KanałSprzedaży AS 'Kanał sprzedaży',
+SUM(KwotaSprzedaży) AS 'Kwota sprzedaży',
+GROUPING(Województwo) AS 'Województwo – wynik funkcji GROUPING',
+GROUPING(KanałSprzedaży) AS 'Kanał sprzedaży – wynik funkcji GROUPING'
+FROM ZestawienieSprzedaży
+GROUP BY CUBE(Województwo, KanałSprzedaży)
+ORDER BY Województwo, KanałSprzedaży
+
+SELECT
+ISNULL(Województwo,' ') AS 'Województwo',
+ISNULL(KanałSprzedaży, ' ') AS 'Kanał sprzedaży',
+SUM(KwotaSprzedaży) AS 'Kwota sprzedaży',
+CASE WHEN GROUPING(Województwo) = 1
+AND GROUPING(KanałSprzedaży) = 1 THEN 'Suma łączna'
+WHEN GROUPING(Województwo) = 1
+AND GROUPING(KanałSprzedaży) = 0 THEN 'Kanał sprzedaży – suma częściowa'
+WHEN GROUPING(Województwo) = 0
+AND GROUPING(KanałSprzedaży) = 1 THEN 'Województwo – suma częściowa'
+ELSE ' ' END AS 'Suma częściowa/Suma łączna'
+FROM ZestawienieSprzedaży
+GROUP BY CUBE(Województwo, KanałSprzedaży)
+ORDER BY
+CASE
+WHEN GROUPING(Województwo) = 0 AND GROUPING(KanałSprzedaży) = 0 THEN 1
+WHEN GROUPING(Województwo) = 0 AND GROUPING(KanałSprzedaży) = 1 THEN 2
+WHEN GROUPING(Województwo) = 1 AND GROUPING(KanałSprzedaży) = 0 THEN 3
+ELSE 4
+END
+
+SELECT
+Województwo,
+KanałSprzedaży,
+SUM(KwotaSprzedaży) AS 'Kwota sprzedaży'
+FROM ZestawienieSprzedaży
+GROUP BY Województwo, KanałSprzedaży
+ORDER BY Województwo, KanałSprzedaży
+
+SELECT
+DataSprzedaży, 
+Województwo,
+KanałSprzedaży,
+SUM(KwotaSprzedaży) AS 'Kwota sprzedaży'
+FROM ZestawienieSprzedaży
+GROUP BY DataSprzedaży, Województwo, KanałSprzedaży
+ORDER BY DataSprzedaży, Województwo, KanałSprzedaży
+
+SELECT * FROM
+(SELECT DataSprzedaży, KanałSprzedaży, Województwo, KwotaSprzedaży FROM ZestawienieSprzedaży) AS GłównaInstrukcja
+PIVOT (SUM(KwotaSprzedaży) FOR Województwo IN ([MAZ], [PDL])) AS TabelaPrzestawna
+ORDER BY DataSprzedaży
+
+SELECT * FROM
+(SELECT KanałSprzedaży, DataSprzedaży, Województwo, KwotaSprzedaży FROM ZestawienieSprzedaży) AS GłównaInstrukcja
+PIVOT (SUM(KwotaSprzedaży) FOR Województwo IN ([MAZ], [PDL])) AS TabelaPrzestawna
+ORDER BY KanałSprzedaży
+
+SELECT * FROM
+(SELECT DataSprzedaży, Województwo, KanałSprzedaży, KwotaSprzedaży FROM ZestawienieSprzedaży) AS GłównaInstrukcja
+PIVOT (SUM(KwotaSprzedaży) FOR KanałSprzedaży IN ([Internet], [PunktSprzedażyDetalicznej])) AS TabelaPrzestawna
+ORDER BY DataSprzedaży
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 11- - - - - - — - - - - - - - - - - - - -
+
+
+SELECT *
+FROM Klienci
+INNER JOIN Zamówienia
+ON Klienci.IDKlienta = Zamówienia.IDKlienta
+
+SELECT *
+FROM Zamówienia
+INNER JOIN Klienci
+ON Zamówienia.IDKlienta = Klienci.IDKlienta
+
+SELECT *
+FROM Klienci, Zamówienia
+WHERE Klienci.IDKlienta = Zamówienia.IDKlienta
+
+SELECT
+K.IDKlienta AS 'ID klienta',
+K.ImięKlienta AS 'Imię klienta',
+K.NazwiskoKlienta AS 'Nazwisko klienta',
+Z.IDZamówienia AS 'ID zamówienia',
+Z.DataZamówienia AS 'Data',
+Z.KwotaZamówienia AS 'Kwota'
+FROM Klienci AS K
+INNER JOIN Zamówienia AS Z
+ON K.IDKlienta = Z.IDKlienta
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 12- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+Klienci.ImięKlienta AS 'Imię klienta',
+Klienci.NazwiskoKlienta AS 'Nazwisko klienta',
+Zamówienia.DataZamówienia AS 'Data zamówienia',
+Zamówienia.KwotaZamówienia AS 'Kwota zamówienia',
+Zwroty.DataZwrotu AS 'Data zwrotu',
+Zwroty.KwotaZwrotu AS 'Kwota zwrotu'
+FROM Klienci
+LEFT JOIN Zamówienia
+ON Klienci.IDKlienta = Zamówienia.IDKlienta
+LEFT JOIN Zwroty
+ON Zamówienia.IDZamówienia = Zwroty.IDZamówienia
+ORDER BY Klienci.NazwiskoKlienta, Klienci.ImięKlienta, Zamówienia.DataZamówienia
+
+SELECT
+Klienci.ImięKlienta AS 'Imię klienta',
+Klienci.NazwiskoKlienta AS 'Nazwisko klienta',
+Zamówienia.DataZamówienia AS 'Data zamówienia',
+Zamówienia.KwotaZamówienia AS 'Kwota zamówienia'
+FROM Klienci
+LEFT JOIN Zamówienia
+ON Klienci.IDKlienta = Zamówienia.IDKlienta
+LEFT JOIN Zwroty
+ON Zamówienia.IDZamówienia = Zwroty.IDZamówienia
+WHERE Zamówienia.IDZamówienia IS NOT NULL
+AND Zwroty.IDZwrotu IS NULL
+ORDER BY Klienci.NazwiskoKlienta, Klienci.ImięKlienta, Zamówienia.DataZamówienia
+
+SELECT
+OpisKlasyfikacji AS 'Opis klasyfikacji filmu',
+TytułFilmu AS 'Tytuł filmu'
+FROM Filmy
+FULL JOIN KlasyfikacjaFilmów
+ON Filmy.Klasyfikacja = KlasyfikacjaFilmów.Klasyfikacja
+ORDER BY OpisKlasyfikacji, TytułFilmu
+
+SELECT
+Rozmiar,
+Kolor
+FROM RozmiaryKoszulek
+CROSS JOIN KoloryKoszulek
+
+SELECT
+Rozmiar,
+Kolor
+FROM RozmiaryKoszulek, KoloryKoszulek
+
+SELECT
+IDZamówienia AS 'ID zamówienia',
+DataZamówienia AS 'Data zamówienia',
+KwotaZamówienia AS 'Kwota zamówienia'
+FROM Zamówienia
+CROSS JOIN KluczoweDaty
+WHERE DataZamówienia = OstatniaDataPrzetwarzania
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 13- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+Pracownicy.Pracownik AS 'Imię i nazwisko pracownika',
+Przełożeni.Pracownik AS 'Imię i nazwisko przełożonego'
+FROM Kadry AS Pracownicy
+INNER JOIN Kadry AS Przełożeni
+ON Pracownicy.IDPrzełożonego = Przełożeni.IDPracownika
+ORDER BY Pracownicy.Pracownik
+
+SELECT
+Pracownicy.Pracownik AS 'Imię i nazwisko pracownika',
+Przełożeni.Pracownik AS 'Imię i nazwisko przełożonego'
+FROM Kadry AS Pracownicy
+LEFT JOIN Kadry AS Przełożeni
+ON Pracownicy.IDPrzełożonego = Przełożeni.IDPracownika
+ORDER BY Pracownicy.Pracownik
+
+SELECT
+Klienci.ImięKlienta AS 'Imię klienta',
+Klienci.NazwiskoKlienta AS 'Nazwisko klienta',
+Zamówienia.DataZamówienia AS 'Data zamówienia',
+Zamówienia.KwotaZamówienia AS 'Kwota zamówienia',
+Zwroty.DataZwrotu AS 'Data zwrotu',
+Zwroty.KwotaZwrotu AS 'Kwota zwrotu'
+FROM Klienci
+LEFT JOIN Zamówienia
+ON Klienci.IDKlienta = Zamówienia.IDKlienta
+LEFT JOIN Zwroty
+ON Zamówienia.IDZamówienia = Zwroty.IDZamówienia
+ORDER BY Klienci.NazwiskoKlienta, Klienci.ImięKlienta, Zamówienia.DataZamówienia
+
+CREATE VIEW KlienciZamówieniaZwroty AS
+SELECT
+Klienci.ImięKlienta AS 'Imię klienta',
+Klienci.NazwiskoKlienta AS 'Nazwisko klienta',
+Zamówienia.DataZamówienia AS 'Data zamówienia',
+Zamówienia.KwotaZamówienia AS 'Kwota zamówienia',
+Zwroty.DataZwrotu AS 'Data zwrotu',
+Zwroty.KwotaZwrotu AS 'Kwota zwrotu'
+FROM Klienci
+LEFT JOIN Zamówienia
+ON Klienci.IDKlienta = Zamówienia.IDKlienta
+LEFT JOIN Zwroty
+ON Zamówienia.IDZamówienia = Zwroty.IDZamówienia
+
+SELECT *
+FROM KlienciZamówieniaZwroty
+
+SELECT *
+FROM KlienciZamówieniaZwroty
+ORDER BY [Nazwisko klienta], [Imię klienta], [Data zamówienia]
+
+SELECT
+[Imię klienta],
+[Nazwisko klienta],
+[Data zamówienia]
+FROM KlienciZamówieniaZwroty
+WHERE [Nazwisko klienta] = 'Wieczorek'
+
+CREATE VIEW WidokKlientów AS
+SELECT
+ImięKlienta AS 'Imię klienta',
+NazwiskoKlienta AS 'Nazwisko klienta'
+FROM Klienci
+
+ALTER VIEW WidokKlientów AS
+SELECT
+ImięKlienta AS 'Imię klienta',
+NazwiskoKlienta AS 'Nazwisko klienta',
+IDKlienta AS 'ID klienta'
+FROM Klienci
+
+DROP VIEW WidokKlientów
+
+DROP VIEW KlienciZamówieniaZwroty
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 14- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika',
+ISNULL(TransakcjeGotówka.SumaGotówka, 0) AS 'Łączna kwota zapłacona gotówką'
+FROM Użytkownicy
+LEFT JOIN
+(SELECT
+IDUżytkownika,
+SUM(KwotaTransakcji) as 'SumaGotówka'
+FROM Transakcje
+WHERE SposóbZapłaty = 'Gotówka'
+GROUP BY IDUżytkownika) AS TransakcjeGotówka
+ON Użytkownicy.IDUżytkownika = TransakcjeGotówka.IDUżytkownika
+ORDER BY Użytkownicy.IDUżytkownika
+
+SELECT
+IDUżytkownika,
+SUM(KwotaTransakcji) as 'SumaGotówka'
+FROM Transakcje
+WHERE SposóbZapłaty = 'Gotówka'
+GROUP BY IDUżytkownika
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika',
+SUM(KwotaTransakcji) as 'SumaGotówka'
+FROM Użytkownicy
+LEFT JOIN Transakcje 
+ON Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika
+WHERE SposóbZapłaty = 'Gotówka'
+GROUP BY Użytkownicy.IDUżytkownika, Użytkownicy.NazwaUżytkownika 
+ORDER BY Użytkownicy.IDUżytkownika 
+
+SELECT NazwaUżytkownika AS 'Nazwa użytkownika'
+FROM Użytkownicy
+WHERE IDUżytkownika IN
+(SELECT IDUżytkownika
+FROM Transakcje
+WHERE SposóbZapłaty = 'Gotówka')
+
+SELECT NazwaUżytkownika AS 'Nazwa użytkownika'
+FROM Użytkownicy
+INNER JOIN Transakcje
+ON Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika
+WHERE SposóbZapłaty = 'Gotówka'
+GROUP BY Użytkownicy.NazwaUżytkownika
+
+SELECT
+NazwaUżytkownika as 'Nazwa użytkownika'
+FROM Użytkownicy
+WHERE
+(SELECT
+SUM (KwotaTransakcji) 
+FROM Transakcje
+WHERE Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika)
+< 20
+
+SELECT
+NazwaUżytkownika as 'Nazwa użytkownika'
+FROM Użytkownicy
+LEFT JOIN Transakcje
+ON Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika
+GROUP BY Użytkownicy.IDUżytkownika, Użytkownicy.NazwaUżytkownika
+HAVING SUM (KwotaTransakcji) < 20
+
+SELECT
+NazwaUżytkownika as 'Nazwa użytkownika'
+FROM Użytkownicy
+WHERE EXISTS
+(SELECT *
+FROM Transakcje
+WHERE Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika)
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika'
+FROM Użytkownicy
+WHERE IDUżytkownika IN
+(SELECT IDUżytkownika
+FROM Transakcje)
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika'
+FROM Użytkownicy
+INNER JOIN Transakcje
+ON Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika
+GROUP BY NazwaUżytkownika
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika',
+COUNT (IDTransakcji) AS 'Liczba transakcji'
+FROM Użytkownicy
+LEFT JOIN Transakcje
+ON Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika 
+GROUP BY Użytkownicy.IDUżytkownika, Użytkownicy.NazwaUżytkownika
+ORDER BY Użytkownicy.IDUżytkownika 
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika',
+(SELECT
+COUNT (IDTransakcji)
+FROM Transakcje
+WHERE Użytkownicy.IDUżytkownika = Transakcje.IDUżytkownika)
+AS 'Liczba transakcji'
+FROM Użytkownicy
+ORDER BY Użytkownicy.IDUżytkownika
+
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika',
+ISNULL(TransakcjeGotówka.SumaGotówka, 0) AS 'Łączna kwota zapłacona gotówką'
+FROM Użytkownicy
+LEFT JOIN
+(SELECT
+IDUżytkownika,
+SUM(KwotaTransakcji) as 'SumaGotówka'
+FROM Transakcje
+WHERE SposóbZapłaty = 'Gotówka'
+GROUP BY IDUżytkownika) AS TransakcjeGotówka
+ON Użytkownicy.IDUżytkownika = TransakcjeGotówka.IDUżytkownika
+ORDER BY Użytkownicy.IDUżytkownika
+
+WITH TransakcjeGotówka AS
+(SELECT
+IDUżytkownika,
+SUM(KwotaTransakcji) as 'SumaGotówka'
+FROM Transakcje
+WHERE SposóbZapłaty = 'Gotówka'
+GROUP BY IDUżytkownika) 
+SELECT
+NazwaUżytkownika AS 'Nazwa użytkownika',
+ISNULL(TransakcjeGotówka.SumaGotówka, 0) AS 'Łączna kwota zapłacona gotówką'
+FROM Użytkownicy
+LEFT JOIN TransakcjeGotówka
+ON Użytkownicy.IDUżytkownika = TransakcjeGotówka.IDUżytkownika
+ORDER BY Użytkownicy.IDUżytkownika
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 15- - - - - - — - - - - - - - - - - - - -
+
+
+
+SELECT
+DataZamówienia AS 'Data',
+'Zamówienie' AS 'Rodzaj',
+KwotaZamówienia AS 'Kwota'
+FROM Zamówienia
+WHERE IDKlienta = 2
+UNION
+SELECT
+DataZwrotu AS 'Data',
+'Zwrot' AS 'Rodzaj',
+KwotaZwrotu AS 'Kwota'
+FROM ZwrotyTowarów
+WHERE IDKlienta = 2
+ORDER BY Data
+
+SELECT
+DataZamówienia AS 'Data'
+FROM Zamówienia
+UNION
+SELECT
+DataZwrotu AS 'Data'
+FROM ZwrotyTowarów
+ORDER BY Data
+
+SELECT
+DataZamówienia AS 'Data'
+FROM Zamówienia
+UNION ALL
+SELECT
+DataZwrotu AS 'Data'
+FROM ZwrotyTowarów
+ORDER BY Data
+
+SELECT
+DataZamówienia AS 'Data'
+FROM Zamówienia
+INTERSECT
+SELECT
+DataZwrotu AS 'Data'
+FROM ZwrotyTowarów
+ORDER BY Data
+
+SELECT
+DataZamówienia AS 'Data'
+FROM Zamówienia
+EXCEPT 
+SELECT
+DataZwrotu AS 'Data'
+FROM ZwrotyTowarów
+ORDER BY Data
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 16- - - - - - — - - - - - - - - - - - - -
+
+
+
+CREATE PROCEDURE Procedura_1
+AS
+BEGIN
+SELECT *
+FROM Klienci
+END
+
+CREATE PROCEDURE ProceduraKlient
+(@KlientID INT)
+AS
+BEGIN
+SELECT *
+FROM Klienci
+WHERE IDKlienta = @KlientID
+END
+
+EXEC Procedura_1
+
+EXEC ProceduraKlient
+@KlientID =  2
+
+
+ALTER PROCEDURE ProceduraKlient
+(@KlientID INT)
+AS
+BEGIN
+SELECT
+IDKlienta,
+NazwiskoKlienta
+FROM Klienci
+WHERE IDKlienta = @KlientID
+END
+
+
+DROP PROCEDURE Procedura_1
+
+DROP PROCEDURE ProceduraKlient
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 17- - - - - - — - - - - - - - - - - - - -
+
+
+
+INSERT INTO Kontrahenci
+(ImięKontrahenta, NazwiskoKontrahenta, Województwo)
+VALUES
+('Klaudia', 'Dawidowska', 'ZPM'),
+
+
+INSERT INTO Kontrahenci
+(ImięKontrahenta, NazwiskoKontrahenta, Województwo)
+VALUES
+('Irena', 'Krause', 'OPO')
+
+INSERT INTO Kontrahenci
+(ImięKontrahenta, NazwiskoKontrahenta)
+VALUES
+('Dawid', 'Grabowski')
+
+INSERT INTO Kontrahenci
+(ImięKontrahenta, NazwiskoKontrahenta, Województwo)
+SELECT
+Nazwa1,
+Nazwa2,
+Województwo
+FROM NowiKontrahenci
+WHERE Województwo = 'PKR'
+
+DELETE
+FROM Kontrahenci
+WHERE Województwo = 'PKR'
+
+SELECT
+COUNT (*)
+FROM Kontrahenci
+WHERE Województwo = 'PKR'
+
+UPDATE Kontrahenci
+SET NazwiskoKontrahenta = 'Borowski',
+Województwo = 'MŁP'
+WHERE IDKontrahenta = 1
+
+
+UPDATE Dostawcy
+SET Dostawcy.Województwo =
+(SELECT ZmianaDanychDostawców.Województwo
+FROM ZmianaDanychDostawców
+WHERE Dostawcy.IDDostawcy = ZmianaDanychDostawców.IDDostawcy),
+Dostawcy.KodPocztowy =
+(SELECT ZmianaDanychDostawców.KodPocztowy
+FROM ZmianaDanychDostawców
+WHERE Dostawcy.IDDostawcy = ZmianaDanychDostawców.IDDostawcy)
+WHERE EXISTS
+(SELECT *
+FROM ZmianaDanychDostawców
+WHERE Dostawcy.IDDostawcy = ZmianaDanychDostawców.IDDostawcy )
+
+
+
+
+- - - - - - — - - - - - - - - - - - - -
+INSTRUKCJE SQL Z ROZDZIAŁU 18- - - - - - — - - - - - - - - - - - - -
+
+
+
+CREATE TABLE MojaTabela
+(Kolumna_1 INT IDENTITY (1,1) PRIMARY KEY NOT NULL,
+Kolumna_2 INT NULL
+REFERENCES PowiązanaTabela (PierwszaKolumna)
+ON DELETE SET NULL,
+Kolumna_3 VARCHAR (25) NULL,
+Kolumna_4 FLOAT NULL DEFAULT (10) )
+
+
+ALTER TABLE MojaTabela
+DROP COLUMN Kolumna_3
+
+CREATE INDEX Indeks2
+ON MojaTabela (Kolumna_4)
+
+DROP INDEX Indeks2
+ON MojaTabela
