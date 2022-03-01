@@ -16,15 +16,21 @@
 
 DML, DDL, DCI
 
+- Folder in this repository is based on:
+    - https://www.amazon.com/Language-SQL-Learning-Larry-Rockoff/dp/0134658256
+
 
 # Basic SQL - MS SQL Server
+
+Select example:
 
 ```
 SELECT column_list
 FROM table
+
 ```
 
-
+Comment example:po
 
 ```
 SELECT
@@ -34,4 +40,15 @@ NazwiskoKlienta /*to jest drugi komentarz
 to jest dalsza część drugiego komentarza
 tutaj znajduje się koniec drugiego komentarza */
 FROM Klienci
+```
+
+Alias
+
+```
+SELECT
+IDSprzedaży,
+ImięKlienta,
+NazwiskoKlienta,
+ImięKlienta + ' ' + NazwiskoKlienta AS 'Nazwa'
+FROM Sprzedaż
 ```

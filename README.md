@@ -1,5 +1,7 @@
 # SQL, NoSQL and DataBases - Architekture and practical examples
 
+<p>&nbsp;</p>
+
 # Table of contents
 
 <p>&nbsp;</p>
@@ -73,6 +75,20 @@
 
 - NoSQL Database Tutorial
     - https://www.youtube.com/watch?v=xh4gy1lbL2k&t=68s
+
+<p>&nbsp;</p>
+
+- Modern Big Data Analysis with SQL
+    - https://www.coursera.org/specializations/cloudera-big-data-analysis-sql
+
+
+<p>&nbsp;</p>
+
+- Data Analyst with SQL Server
+    - https://app.datacamp.com/learn/career-tracks/data-analyst-with-sql-server
+
+<p>&nbsp;</p>
+
 # Cassandra
 
 <p>&nbsp;</p>
