@@ -1,27 +1,35 @@
+# Mongo Databases - resources and introduction
+
 # Table of contents
 
 <p>&nbsp;</p>
 
-1. [Introduction](#Introduction)
+- [Introduction](#Introduction)
 
-2. [M001: MongoDB Basics](#M001-MongoDB-Basics)
+- [M001: MongoDB Basics](#M001-MongoDB-Basics)
 
-3. [JSON and BSON](#JSON-and-BSON)
+- [JSON and BSON](#JSON-and-BSON)
 
 <p>&nbsp;</p>
 
 
 # Introduction
 
-MongoDB and introduction to this database. 
+<p>&nbsp;</p>
 
-Free courses avaliable on MongoDB webside: [Link](https://university.mongodb.com/courses/catalog)
+MongoDB and introduction to this database. Free courses avaliable on MongoDB webside: 
 
 <p>&nbsp;</p>
 
-# M001 MongoDB Basics
+- Course provided by Mongo University
+    - https://university.mongodb.com/courses/catalog
 
->[Link](https://university.mongodb.com/mercury/M001/2022_February_1/overview)
+<p>&nbsp;</p>
+
+# M001 MongoDB Basics - introduction
+
+- MongoDB Basic
+    - https://university.mongodb.com/mercury/M001/2022_February_1/overview
 
 <p>&nbsp;</p>
 
@@ -45,7 +53,12 @@ Since the range of what NoSQL means is so wide, we must narrow our definition fu
 
 # JSON and BSON
 
-> [Link to article](https://www.mongodb.com/json-and-bson)
+<p>&nbsp;</p>
+
+- JSON vs BSON article
+    - https://www.mongodb.com/json-and-bson
+
+<p>&nbsp;</p>
 
 BSON simply stands for “Binary JSON,” and that’s exactly what it was invented to be. BSON’s binary structure encodes type and length information, which allows it to be parsed much more quickly.
 
@@ -55,11 +68,14 @@ Languages that support any kind of complex mathematics typically have different 
 
 Not only is it helpful to be able to represent those distinctions in data stored in MongoDB, it also allows for comparisons and calculations to happen directly on data in ways that simplify consuming application code.
 
+<p>&nbsp;</p>
 
 # Documentation
 
+<p>&nbsp;</p>
 
-> [Link to doc](https://docs.mongodb.com/manual/reference/operator/update/#id1)
+- MongoDB documentation
+    - https://docs.mongodb.com/manual/reference/operator/update/#id1
 
 
 
