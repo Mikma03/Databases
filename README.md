@@ -8,7 +8,7 @@
 
 1. [Introduction](#Introduction)
 
-    1.1. [Databases - resources](#databases---resources)
+    1.1. [Databases - courses](#databases---courses)
 
 2. [Cassandra](#Cassandra)
 
@@ -54,7 +54,7 @@
 
 <p>&nbsp;</p>
 
-## Databases - resources
+## Databases - courses
 
 <p>&nbsp;</p>
 
@@ -81,11 +81,6 @@
 - Modern Big Data Analysis with SQL
     - https://www.coursera.org/specializations/cloudera-big-data-analysis-sql
 
-
-<p>&nbsp;</p>
-
-- Data Analyst with SQL Server
-    - https://app.datacamp.com/learn/career-tracks/data-analyst-with-sql-server
 
 <p>&nbsp;</p>
 
@@ -172,6 +167,10 @@
 
 <p>&nbsp;</p>
 
+- Data Analyst with SQL Server
+    - https://app.datacamp.com/learn/career-tracks/data-analyst-with-sql-server
+
+<p>&nbsp;</p>
 
 # MySQL
 
