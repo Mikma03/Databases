@@ -8,6 +8,10 @@
 
 1. [Introduction](#Introduction)
 
+2. [Basic SQL - MS SQL Server](#Basic-SQL---MS-SQL-Server)
+
+<!-- Basic SQL - MS SQL Server -->
+
 <p>&nbsp;</p>
 
 # Introduction
@@ -19,6 +23,7 @@ DML, DDL, DCI
 - Folder in this repository is based on:
     - https://www.amazon.com/Language-SQL-Learning-Larry-Rockoff/dp/0134658256
 
+<p>&nbsp;</p>
 
 # Basic SQL - MS SQL Server
 

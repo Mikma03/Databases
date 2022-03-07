@@ -1,4 +1,4 @@
-# SQL, NoSQL and DataBases - Architekture and practical examples
+# SQL, NoSQL and DataBases - Architekture, practical examples and resources
 
 <p>&nbsp;</p>
 
@@ -6,31 +6,30 @@
 
 <p>&nbsp;</p>
 
-1. [Introduction](#Introduction)
+- [Introduction](#Introduction)
 
-    1.1. [Databases - courses](#databases---courses)
+- [Databases - courses](#databases---courses)
 
-2. [Cassandra](#Cassandra)
+- [Cassandra](#Cassandra)
 
-3. [MongoDB](#MongoDB)
+- [MongoDB](#MongoDB)
 
-4. [PostgreSQL](#PostgreSQL)
+- [PostgreSQL](#PostgreSQL)
 
-5. [MS_SQL_Server](#MS_SQL_Server)
+- [MS_SQL_Server](#MS_SQL_Server)
 
-6. [MySQL](#MySQL)
+- [MySQL](#MySQL)
 
-7. [Redis](#Redis)
+- [Redis](#Redis)
 
-8. [Neo4j](#Neo4j)
+- [Neo4j](#Neo4j)
 
-9. [Oracle](#Oracle)
+- [Oracle](#Oracle)
 
-10. 
 
 <p>&nbsp;</p>
 
-# Introduction
+# Introduction - usefull links
 
 <p>&nbsp;</p>
 
@@ -54,7 +53,7 @@
 
 <p>&nbsp;</p>
 
-## Databases - courses
+# Databases - courses
 
 <p>&nbsp;</p>
 
