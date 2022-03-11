@@ -53,6 +53,8 @@
 
 <p>&nbsp;</p>
 
+- Serverless databases - article
+    - https://www.datastax.com/what-is-a-serverless-database?utm_source=developer-newsletter&utm_medium=newsletter&utm_campaign=Dev-Rel-News&utm_term=all-plays&utm_content=44630
 # Databases - courses
 
 <p>&nbsp;</p>
