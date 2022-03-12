@@ -29,3 +29,6 @@ This folder consist of materials and resources and courses as well regarding to 
     - https://app.datacamp.com/learn/career-tracks/data-analyst-with-sql-server
 
 <p>&nbsp;</p>
+
+- SQL Server Management Studio (SSMS) - tutorial
+    - https://www.youtube.com/watch?v=Q8gBvsUjTLw
