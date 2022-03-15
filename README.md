@@ -55,6 +55,9 @@
 
 - Serverless databases - article
     - https://www.datastax.com/what-is-a-serverless-database?utm_source=developer-newsletter&utm_medium=newsletter&utm_campaign=Dev-Rel-News&utm_term=all-plays&utm_content=44630
+
+<p>&nbsp;</p>
+
 # Databases - courses
 
 <p>&nbsp;</p>
@@ -206,7 +209,19 @@
 
 <p>&nbsp;</p>
 
-test
+- Redis Course - In-Memory Database
+    - https://www.youtube.com/watch?v=XCsS_NVAa1g&t=2s
+
+<p>&nbsp;</p>
+
+- Redis Tutorial
+    - https://www.youtube.com/watch?v=Qu5gX2uOaL8
+
+<p>&nbsp;</p>
+
+- Redis 4.x Cookbook
+    - https://www.oreilly.com/library/view/redis-4x-cookbook/9781783988167/
+
 
 <p>&nbsp;</p>
 
@@ -218,4 +233,4 @@ test
 
 # Oracle
 
-test
+tes
