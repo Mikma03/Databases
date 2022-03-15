@@ -58,6 +58,8 @@
 
 <p>&nbsp;</p>
 
+- HUE - What's New in Hue?
+    - https://www.youtube.com/watch?v=arpsgz4B8B8
 # Databases - courses
 
 <p>&nbsp;</p>
@@ -233,4 +235,19 @@ test
 
 # Oracle
 
-tes
+- Practical Oracle SQL: Mastering the Full Power of Oracle Database
+    - https://www.oreilly.com/library/view/practical-oracle-sql/9781484256176/
+
+- Expert Oracle Database Architecture: Techniques and Solutions for High Performance and Productivity
+    - https://www.oreilly.com/library/view/expert-oracle-database/9781484274996/
+
+- Machine Learning for Oracle Database Professionals: Deploying Model-Driven Applications and Automation Pipelines
+    - https://www.oreilly.com/library/view/machine-learning-for/9781484270325/
+
+- 1Z0-071 Oracle SQL Developer: Certified Associate (Database)
+    - https://www.udemy.com/course/1z0-071-learn-oracle-sql-database-using-developer/
+- Oracle Database Administration
+    - https://www.udemy.com/course/oracledba/
+
+- Complete Oracle Database Administration course (19C,21C)
+    - https://www.udemy.com/course/oracle-database-course/
