@@ -6,7 +6,7 @@
 
 <p>&nbsp;</p>
 
-- [Introduction](#Introduction)
+- [Introduction - usefull links](#introduction---usefull-links)
 
 - [Databases - courses](#databases---courses)
 
@@ -60,6 +60,9 @@
 
 - HUE - What's New in Hue?
     - https://www.youtube.com/watch?v=arpsgz4B8B8
+
+<p>&nbsp;</p>
+
 # Databases - courses
 
 <p>&nbsp;</p>
@@ -106,6 +109,11 @@
 
 - Apache Cassandra training course
     - https://www.packtpub.com/product/learn-apache-cassandra-in-just-2-hours-video/9781839211454
+
+<p>&nbsp;</p>
+
+- Cassandra: The Definitive Guide
+    - https://www.oreilly.com/library/view/cassandra-the-definitive/9781492097136/
 
 <p>&nbsp;</p>
 

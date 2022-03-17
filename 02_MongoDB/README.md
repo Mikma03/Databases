@@ -33,7 +33,7 @@ MongoDB and introduction to this database. Free courses avaliable on MongoDB web
 
 <p>&nbsp;</p>
 
-So what is the MongoDB Database.A database, meaning a structured way to store and access data. More specifically, it is a NoSQL database. NoSQL is a very generic term used to describe any data store that doesn't use legacy approach of related tables of data. This means that you're storing your data in an organized way, but not in rows and columns An example of NoSQL databases can be anything from a library card catalog, to a more sophisticated data store like MongoDB.
+So what is the MongoDB Database. A database, meaning a structured way to store and access data. More specifically, it is a NoSQL database. NoSQL is a very generic term used to describe any data store that doesn't use legacy approach of related tables of data. This means that you're storing your data in an organized way, but not in rows and columns An example of NoSQL databases can be anything from a library card catalog, to a more sophisticated data store like MongoDB.
 
 Since the range of what NoSQL means is so wide, we must narrow our definition further. MongoDB is a NoSQL document database. This means that data in MongoDB is stored as documents. We will cover what a document is in the next lesson. These documents are in turn stored in what we call collections of documents. That's why MongoDB is categorized as a NoSQL document database. In conclusion, the MongoDB database is a NoSQL document database.
 
@@ -48,6 +48,9 @@ Since the range of what NoSQL means is so wide, we must narrow our definition fu
 
 **Collection** - an organized store of documents in MongoDB, usually with common fields between documents. There can be many collections per database and many documents per collection.
 
+**Instance** - a single machine locally or in the cloud, running a certain software, in our case it is the MongoDB database.
+
+**Cluster** - group of servers that store your data.
 
 <p>&nbsp;</p>
 
@@ -77,5 +80,18 @@ Not only is it helpful to be able to represent those distinctions in data stored
 - MongoDB documentation
     - https://docs.mongodb.com/manual/reference/operator/update/#id1
 
+# Com
 
+```
+mongodump --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"
+```
+```
+mongoexport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --collection=sales --out=sales.json
+```
+```
+mongorestore --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"  --drop dump
+```
+```
+mongoimport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --drop sales.json
+```
 
