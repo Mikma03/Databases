@@ -63,6 +63,11 @@
 
 <p>&nbsp;</p>
 
+- Databases Guide - a lot of knowledge in one place
+    - https://database.guide/
+
+<p>&nbsp;</p
+
 # Databases - courses
 
 <p>&nbsp;</p>
@@ -163,6 +168,16 @@
 
 - Learn PostgreSQL Tutorial
     - https://www.youtube.com/watch?v=qw--VYLpxG4&t=11202s
+
+<p>&nbsp;</p>
+
+- PostgreSQL Database Administration for Beginners
+    - https://www.youtube.com/watch?v=Ir7nScz_Vs4
+
+<p>&nbsp;</p>
+
+- Mastering PostgreSQL 13 - Fourth Edition
+    - https://www.packtpub.com/product/mastering-postgresql-13-fourth-edition/9781800567498
 
 <p>&nbsp;</p>
 
