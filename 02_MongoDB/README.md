@@ -56,8 +56,6 @@ Since the range of what NoSQL means is so wide, we must narrow our definition fu
 
 # JSON and BSON
 
-<p>&nbsp;</p>
-
 - JSON vs BSON article
     - https://www.mongodb.com/json-and-bson
 
@@ -75,23 +73,7 @@ Not only is it helpful to be able to represent those distinctions in data stored
 
 # Documentation
 
-<p>&nbsp;</p>
-
 - MongoDB documentation
     - https://docs.mongodb.com/manual/reference/operator/update/#id1
 
-# Com
-
-```
-mongodump --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"
-```
-```
-mongoexport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --collection=sales --out=sales.json
-```
-```
-mongorestore --uri "mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies"  --drop dump
-```
-```
-mongoimport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.mongodb.net/sample_supplies" --drop sales.json
-```
 

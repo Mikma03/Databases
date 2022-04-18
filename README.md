@@ -41,6 +41,9 @@
 - Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage
     - https://drill.apache.org/
 
+        - Apache Drill: A Hands-on Course
+            - https://www.udemy.com/course/apache-drill-a-hands-on-course/
+
 <p>&nbsp;</p>
 
 - Toad by Quest is a database management toolset that database developers, administrators and data analysts
@@ -82,8 +85,8 @@
 
 <p>&nbsp;</p>
 
-- SQL Tutorial - Full Database Course
-    - https://www.youtube.com/watch?v=HXV3zeQKqGY
+- Complete SQL and Databases Bootcamp
+    - https://www.udemy.com/course/complete-sql-databases-bootcamp-zero-to-mastery/
 
 <p>&nbsp;</p>
 
@@ -151,6 +154,10 @@
 
 <p>&nbsp;</p>
 
+- MongoDB Fundamentals
+    - https://subscription.packtpub.com/book/data/9781839210648/pref
+
+<p>&nbsp;</p>
 
 # PostgreSQL
 
@@ -200,6 +207,9 @@
     - https://app.datacamp.com/learn/career-tracks/data-analyst-with-sql-server
 
 <p>&nbsp;</p>
+
+- SQL Server Management Studio (SSMS) | Full Course
+    - https://www.youtube.com/watch?v=Q8gBvsUjTLw&t=2594s
 
 # MySQL
 
