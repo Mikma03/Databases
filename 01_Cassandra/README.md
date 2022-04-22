@@ -2,6 +2,14 @@
 
 # Table of content
 
+<!-- TOC -->
+
+- [Apache Cassandra](#apache-cassandra)
+- [Table of content](#table-of-content)
+- [Introduction](#introduction)
+- [Resources and materials](#resources-and-materials)
+
+<!-- /TOC -->
 # Introduction
 
 # Resources and materials
