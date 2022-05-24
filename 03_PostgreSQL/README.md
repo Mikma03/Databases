@@ -7,18 +7,13 @@
 
 <p>&nbsp;</p>
 
-- Google BigQuery and PostgreSQL: BigQuery for Data Analysis
-    - https://www.packtpub.com/product/google-bigquery-and-postgresql-bigquery-for-data-analysis-video/9781803237633
-
-<p>&nbsp;</p>
-
 - Learn PostgreSQL Tutorial
     - https://www.youtube.com/watch?v=qw--VYLpxG4&t=11202s
 
 <p>&nbsp;</p>
 
 - PostgreSQL Database Administration for Beginners
-    - https://www.youtube.com/watch?v=Ir7nScz_Vs4
+    - https://www.udemy.com/course/postgresql-database-administration-dba-for-beginners/
 
 <p>&nbsp;</p>
 

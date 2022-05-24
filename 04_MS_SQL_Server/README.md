@@ -32,3 +32,8 @@ This folder consist of materials and resources and courses as well regarding to 
 
 - SQL Server Management Studio (SSMS) - tutorial
     - https://www.youtube.com/watch?v=Q8gBvsUjTLw
+
+<p>&nbsp;</p>
+
+- SQL Server Performance Essentials
+    - https://www.youtube.com/watch?v=HvxmF0FUwrM&ab_channel=freeCodeCamp.org

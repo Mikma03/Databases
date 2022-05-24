@@ -6,25 +6,22 @@
 
 <p>&nbsp;</p>
 
+<!-- TOC -->
+
+- [SQL, NoSQL and DataBases - Architekture, practical examples and resources](#sql-nosql-and-databases---architekture-practical-examples-and-resources)
+- [Table of contents](#table-of-contents)
 - [Introduction - usefull links](#introduction---usefull-links)
-
 - [Databases - courses](#databases---courses)
-
-- [Cassandra](#Cassandra)
-
-- [MongoDB](#MongoDB)
-
+- [Cassandra](#cassandra)
+- [MongoDB](#mongodb)
 - [PostgreSQL](#postgresql)
+- [MS_SQL_Server](#ms_sql_server)
+- [MySQL](#mysql)
+- [Redis](#redis)
+- [Neo4j](#neo4j)
+- [Oracle](#oracle)
 
-- [MS_SQL_Server](#MS_SQL_Server)
-
-- [MySQL](#MySQL)
-
-- [Redis](#Redis)
-
-- [Neo4j](#Neo4j)
-
-- [Oracle](#Oracle)
+<!-- /TOC -->
 
 
 <p>&nbsp;</p>
@@ -38,11 +35,11 @@
 
 <p>&nbsp;</p>
 
-- Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage
+- Apache Drill
     - https://drill.apache.org/
 
-        - Apache Drill: A Hands-on Course
-            - https://www.udemy.com/course/apache-drill-a-hands-on-course/
+    - Apache Drill: A Hands-on Course
+        - https://www.udemy.com/course/apache-drill-a-hands-on-course/
 
 <p>&nbsp;</p>
 
@@ -68,8 +65,6 @@
 
 - Databases Guide - a lot of knowledge in one place
     - https://database.guide/
-
-<p>&nbsp;</p
 
 
 # Databases - courses
@@ -106,25 +101,23 @@
 
 # Cassandra
 
-<p>&nbsp;</p>
-
-- Apache Cassandra Course
-    - https://www.youtube.com/watch?v=y4Gt_LQ8sdA&list=PL2g2h-wyI4SpspPamyuinj9sgxjTFn9ex
-
-<p>&nbsp;</p>
-
-- DataStax Academy Apache Cassandra
+- DataStax Academy Apache Cassandra™ Developer Path
     - https://academy.datastax.com/#/curricula/eca8a762-0181-48a8-b1b5-f98e01376bc3
 
-<p>&nbsp;</p>
+- Apache Cassandra YouTube course
+    - https://www.youtube.com/watch?v=s1xc1HVsRk0&list=PLalrWAGybpB-L1PGA-NfFu2uiWHEsdscD
 
-- Apache Cassandra training course
-    - https://www.packtpub.com/product/learn-apache-cassandra-in-just-2-hours-video/9781839211454
-
-<p>&nbsp;</p>
+- DataStax YouTube course
+    - https://www.youtube.com/watch?v=y4Gt_LQ8sdA&list=PL2g2h-wyI4SpspPamyuinj9sgxjTFn9ex
 
 - Cassandra: The Definitive Guide
     - https://www.oreilly.com/library/view/cassandra-the-definitive/9781492097136/
+
+- Getting Started With Apache Cassandra
+    - https://www.udemy.com/course/apache-cassandra/
+
+- Apache Cassandra : Everything You Need To Know
+    - https://www.udemy.com/course/everything-cassandra/
 
 <p>&nbsp;</p>
 
@@ -176,13 +169,13 @@
 
 <p>&nbsp;</p>
 
-- Learn PostgreSQL Tutorial
-    - https://www.youtube.com/watch?v=qw--VYLpxG4&t=11202s
+- SQL For Beginners Tutorial | Learn SQL in 4.2 Hours | 2021
+    - https://www.youtube.com/watch?v=5hzZtqCNQKk
 
 <p>&nbsp;</p>
 
 - PostgreSQL Database Administration for Beginners
-    - https://www.youtube.com/watch?v=Ir7nScz_Vs4
+    - https://www.udemy.com/course/postgresql-database-administration-dba-for-beginners/
 
 <p>&nbsp;</p>
 

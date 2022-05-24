@@ -23,9 +23,6 @@
 - DataStax YouTube course
     - https://www.youtube.com/watch?v=y4Gt_LQ8sdA&list=PL2g2h-wyI4SpspPamyuinj9sgxjTFn9ex
 
-- Apache Cassandra training course
-    - https://www.packtpub.com/product/learn-apache-cassandra-in-just-2-hours-video/9781839211454
-
 - Cassandra: The Definitive Guide
     - https://www.oreilly.com/library/view/cassandra-the-definitive/9781492097136/
 
