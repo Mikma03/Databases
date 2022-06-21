@@ -11,6 +11,7 @@
 - [SQL, NoSQL and DataBases - Architekture, practical examples and resources](#sql-nosql-and-databases---architekture-practical-examples-and-resources)
 - [Table of contents](#table-of-contents)
 - [Introduction - usefull links](#introduction---usefull-links)
+    - [- Learning SQL](#--learning-sql)
 - [Databases - courses](#databases---courses)
 - [Cassandra](#cassandra)
 - [MongoDB](#mongodb)
@@ -65,6 +66,9 @@
 
 - Databases Guide - a lot of knowledge in one place
     - https://database.guide/
+
+- Learning SQL
+    - https://sqlbolt.com/lesson/select_queries_with_constraints
 
 
 # Databases - courses
