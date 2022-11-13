@@ -84,7 +84,7 @@ GO
 SELECT [ListPrice],
 	CASE
 		WHEN [ListPrice] <10 THEN 'Tani'
-		WHEN [ListPrice] <50 THEN 'Œrednia pó³ka'
+		WHEN [ListPrice] <50 THEN 'ï¿½rednia pï¿½ka'
 		ELSE 'Drogi'
 	END
 FROM [SalesLT].[Product];
@@ -94,19 +94,19 @@ SELECT [Name] AS [Nazwa Produktu], [ListPrice] - [StandardCost] AS Zysk
 FROM [SalesLT].[Product];
 GO
 
-SELECT [ListPrice], ROUND([ListPrice],0) AS [W Zaokr¹gleniu]
+SELECT [ListPrice], ROUND([ListPrice],0) AS [W Zaokrï¿½gleniu]
 FROM [SalesLT].[Product];
 GO
 
-SELECT P.[ListPrice], ROUND([ListPrice],0) AS [W Zaokr¹gleniu]
+SELECT P.[ListPrice], ROUND([ListPrice],0) AS [W Zaokrï¿½gleniu]
 FROM [SalesLT].[Product] AS P;
 GO
 
-SELECT [SalesLT].[Product].[ListPrice], ROUND([ListPrice],0) AS [W Zaokr¹gleniu]
+SELECT [SalesLT].[Product].[ListPrice], ROUND([ListPrice],0) AS [W Zaokrï¿½gleniu]
 FROM [SalesLT].[Product] AS P;
 GO
 
-SELECT 'Zamówienie ' + CAST([SalesOrderID] AS CHAR(5)) + ' zosta³o z³o¿one w roku ' + CONVERT(CHAR(4),DATEPART(YEAR,[OrderDate]))
+SELECT 'Zamï¿½wienie ' + CAST([SalesOrderID] AS CHAR(5)) + ' zostaï¿½o zï¿½oï¿½one w roku ' + CONVERT(CHAR(4),DATEPART(YEAR,[OrderDate]))
 FROM [SalesLT].[SalesOrderHeader];
 GO
 

@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 - [Mongo Databases - resources and introduction](#mongo-databases---resources-and-introduction)
+- [Reference materials](#reference-materials)
 - [Introduction](#introduction)
 - [M001 MongoDB Basics - introduction](#m001-mongodb-basics---introduction)
 - [JSON and BSON](#json-and-bson)
@@ -11,6 +12,23 @@
 <!-- /TOC -->
 
 # Mongo Databases - resources and introduction
+
+# Reference materials
+
+- MongoDB - The Complete Developer's Guide 2022
+  - https://www.udemy.com/course/mongodb-the-complete-developers-guide/
+
+- Complete MongoDB Administration Guide
+  - https://www.udemy.com/course/mongodb-essentials-m/
+
+- The Complete MongoDB Course 2022
+  - https://www.udemy.com/course/the-complete-mongodb-course/
+
+- MongoDB Master Dev Bootcamp | Beginner-Expert (2022 Edition)
+  - udemy.com/course/mongodb-complete-developers-guild/
+
+- NoSQL MongoDB Bootcamp - MongoDB Python Pymongo For Beginner
+  - https://www.udemy.com/course/mongodb-in-nutshell-example-driven-quick-start-in-mongodb/
 
 
 # Introduction

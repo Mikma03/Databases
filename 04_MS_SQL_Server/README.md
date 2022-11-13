@@ -1,39 +1,36 @@
+
+<!-- TOC -->
+
+- [Microsoft - SQL Server](#microsoft---sql-server)
+  - [Materials references](#materials-references)
+    - [Books](#books)
+    - [Udemy](#udemy)
+
+<!-- /TOC -->
+
 # Microsoft - SQL Server
 
-<p>&nbsp;</p>
+## Materials references
 
-# Introduction
+### Books
 
-<p>&nbsp;</p>
+- Beginning T-SQL: A Step-by-Step Approach
+  - https://learning.oreilly.com/library/view/beginning-t-sql-a/9781484266069/
 
-This folder consist of materials and resources and courses as well regarding to MS SQL Server and T-SQL syntax.
- Some of presenation consist also materials connected with PostgreSQL database and syntax, nevertheless for PostgreSQL there is another folder [here](https://github.com/Mikma03/Databases/tree/main/03_PostgreSQL).
+- Expert T-SQL Window Functions in SQL Server 2019
+  - https://learning.oreilly.com/library/view/expert-t-sql-window/9781484251973/
 
-<p>&nbsp;</p>
+- Pro T-SQL 2019
+  - https://learning.oreilly.com/library/view/pro-t-sql-2019/9781484255902/
 
-# Resources - links
+- Pro SQL Server Relational Database Design and Implementation
+  - https://learning.oreilly.com/library/view/pro-sql-server/9781484219720/
 
-<p>&nbsp;</p>
+### Udemy
 
-- SQL Server Crash course
-    - https://www.youtube.com/watch?v=lo80Q8C0nXk
+- Querying Microsoft SQL Server with Transact-SQL
+  - https://www.udemy.com/course/70-461-session-2-querying-microsoft-sql-server-2012/
 
-<p>&nbsp;</p>
+- Rafał Mobilo Microsoft Certified Trainer
+  - https://www.udemy.com/user/mobilo24eu/
 
-- Microsoft SQL Server Development
-    - https://www.packtpub.com/product/microsoft-sql-server-development-for-everyone-video/9781801078559
-
-<p>&nbsp;</p>
-
-- Data Analyst with SQL Server
-    - https://app.datacamp.com/learn/career-tracks/data-analyst-with-sql-server
-
-<p>&nbsp;</p>
-
-- SQL Server Management Studio (SSMS) - tutorial
-    - https://www.youtube.com/watch?v=Q8gBvsUjTLw
-
-<p>&nbsp;</p>
-
-- SQL Server Performance Essentials
-    - https://www.youtube.com/watch?v=HvxmF0FUwrM&ab_channel=freeCodeCamp.org
